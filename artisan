@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+
+define('DCR_START', microtime(true));
+
+require __DIR__.'/vendor/autoload.php';
+
+use DcrSwoole\Command\CommandBootstrap;
+use DcrSwoole\Di\Container;
+use DcrSwoole\Framework\Boostrap;
+use Swoole\Runtime;
+
+!defined('BASE_PATH') && define('BASE_PATH', __DIR__);
+!defined('SWOOLE_HOOK_FLAGS') && define('SWOOLE_HOOK_FLAGS', SWOOLE_HOOK_ALL);
+!defined('CONFIG_PATH') && define('CONFIG_PATH', (__DIR__) . '/config/');
+!defined('PROJECT_ROOT') && define('PROJECT_ROOT', (__DIR__) . '/');
+
+require BASE_PATH . '/vendor/autoload.php';
+
+Runtime::enableCoroutine(SWOOLE_HOOK_FLAGS);
+
+
+$time = set_time_limit(0);
+try {
+    $container = Container::instance();
+} catch (Exception $e) {
+}
+
+// 初始化 注册 config env  db orm
+/** @var Boostrap $bootstrap */
+$bootstrap = $container->make(Boostrap::class);
+
+$bootstrap->run();
+
+CommandBootstrap::bootstrap();
+
+

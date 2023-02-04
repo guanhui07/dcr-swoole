@@ -1,0 +1,14 @@
+.env
+.htaccess
+.user.ini
+/log/
+runtime
+vendor
+.idea
+Test.php
+composer.lock
+.phpunit.result.cache
+.php-cs-fixer.cache
+
+
+
