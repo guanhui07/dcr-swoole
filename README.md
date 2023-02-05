@@ -1,4 +1,4 @@
-# dcr-swoole框架 - 整合各种包，模仿laravel hyperf 骨架 造的一个简单框架骨架
+# dcr-swoole框架 - 整合各种包，模仿laravel hyperf 骨架 实现的框架
 
 - 集成 laravel orm , restful route, redis, guzzle monolog
 - http websocket
