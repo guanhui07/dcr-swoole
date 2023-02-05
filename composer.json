@@ -47,7 +47,7 @@
     "nesbot/carbon": "^2.6",
     "nikic/fast-route": "^1.3",
     "opis/closure": "^3.6",
-    "php-amqplib/php-amqplib": "dev-master",
+    "php-amqplib/php-amqplib": "^3.2",
     "php-di/php-di": "^7.0",
     "qiniu/php-sdk": "^7.7",
     "spatie/image": "^2.2",
