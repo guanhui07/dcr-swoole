@@ -32,7 +32,7 @@ class Config
      *
      * @return bool|mixed
      */
-    protected function dealArr(mixed $data)
+    protected function dealArr(mixed $data): mixed
     {
         if (is_string($data)) {
             switch (strtolower($data)) {
@@ -81,7 +81,7 @@ class Config
     /**
      * @param array $data
      *
-     * @return bool|mixed
+     * @return array
      */
     protected function processConfigArr(array $data)
     {

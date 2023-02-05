@@ -28,7 +28,7 @@ class Json
      *
      * @return mixed
      */
-    public static function decode(string $json, bool $assoc = false, int $depth = 512, int $options = 0)
+    public static function decode(string $json, bool $assoc = false, int $depth = 512, int $options = 0): mixed
     {
         $data = '';
         try {
@@ -55,6 +55,7 @@ class Json
         try {
             $json = json_encode($value, JSON_THROW_ON_ERROR | $options, $depth);
         } catch (JsonException $e) {
+            throw $e;
         }
 
         if (JSON_ERROR_NONE !== json_last_error()) {

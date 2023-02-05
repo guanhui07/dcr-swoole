@@ -17,7 +17,7 @@ abstract class AbstractAnnotation
         return $value;
     }
 
-    protected function bindMainProperty(string $key, array $value)
+    protected function bindMainProperty(string $key, array $value): void
     {
         $formattedValue = $this->formatParams($value);
         if (isset($formattedValue['value'])) {

@@ -29,7 +29,7 @@ class Http
     protected $_config;
 
     /** @var RouteDispatch */
-    protected $_route;
+    protected RouteDispatch $_route;
 
     public function __construct()
     {

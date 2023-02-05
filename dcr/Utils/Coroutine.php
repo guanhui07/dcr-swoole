@@ -19,19 +19,21 @@ class Coroutine
         return Co::id();
     }
 
-    public static function defer(callable $callable)
+    public static function defer(callable $callable): void
     {
         Co::defer($callable);
     }
 
-    public static function sleep(float $seconds)
+    public static function sleep(float $seconds): void
     {
-        usleep(intval($seconds * 1000 * 1000));
+        usleep((int)($seconds * 1000 * 1000));
     }
 
     /**
      * Returns the parent coroutine ID.
      * Returns 0 when running in the top level coroutine.
+     * @param int|null $coroutineId
+     * @return int
      */
     public static function parentId(?int $coroutineId = null): int
     {
@@ -39,6 +41,7 @@ class Coroutine
     }
 
     /**
+     * @param callable $callable
      * @return int Returns the coroutine ID of the coroutine just created.
      *             Returns -1 when coroutine create failed.
      */

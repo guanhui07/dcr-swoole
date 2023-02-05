@@ -12,7 +12,7 @@ class WebSocket
      * @param Server $server
      * @param $request
      */
-    public static function onOpen(Server $server, $request)
+    public static function onOpen(Server $server, $request): void
     {
         echo "server: handshake success with fd{$request->fd}\n";
     }
@@ -21,7 +21,7 @@ class WebSocket
      * @param Server $server
      * @param $frame
      */
-    public static function onMessage(Server $server, $frame)
+    public static function onMessage(Server $server, $frame): void
     {
         echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
         $server->push($frame->fd, 'this is server');
@@ -31,7 +31,7 @@ class WebSocket
      * @param Server $server
      * @param $fd
      */
-    public static function onClose(Server $server, $fd)
+    public static function onClose(Server $server, $fd): void
     {
     }
 }

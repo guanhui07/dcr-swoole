@@ -90,7 +90,7 @@ class Coroutine
         return SwooleCo::getContext($id);
     }
 
-    public static function defer(callable $callable)
+    public static function defer(callable $callable): void
     {
         SwooleCo::defer($callable);
     }

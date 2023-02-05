@@ -11,9 +11,7 @@ use RuntimeException;
 
 class TestMiddleware implements MiddlewareInterface
 {
-    public static string $name = 'test1';
-
-    public function handle()
+    public function handle(): \Closure
     {
         return static function ($request, $next) {
             $data = Request::instance()->get;

@@ -8,7 +8,7 @@ use DcrRedis\Redis;
 
 class Cache
 {
-    public static function set(string $key, $value, $ttl = null)
+    public static function set(string $key, $value, $ttl = null): bool
     {
         return Redis::setex($key, $ttl, serialize($value));
     }
@@ -22,7 +22,7 @@ class Cache
         return $default;
     }
 
-    public static function delete($key)
+    public static function delete($key): int
     {
         return Redis::del($key);
     }

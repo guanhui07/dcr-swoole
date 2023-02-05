@@ -6,15 +6,7 @@ use Exception;
 
 class Str
 {
-    /**
-     * Generate a more truly "random" alpha-numeric string.
-     *
-     * @param int $length
-     *
-     * @return string
-     * @throws Exception
-     */
-    public static function random($length = 16)
+    public static function random($length = 16): string
     {
         $string = '';
         while (($len = strlen($string)) < $length) {

@@ -25,7 +25,7 @@ class Context
      * @param string $id
      * @param null $default
      * @param null $coroutineId
-     * @return mixed|null
+     * @return mixed
      */
     public static function get(string $id, $default = null, $coroutineId = null): mixed
     {
@@ -60,7 +60,7 @@ class Context
      * Release the context when you are not in coroutine environment.
      * @param string $id
      */
-    public static function destroy(string $id)
+    public static function destroy(string $id): void
     {
         unset(static::$nonCoContext[$id]);
     }
@@ -71,7 +71,7 @@ class Context
      * @param Closure $closure
      * @return mixed
      */
-    public static function override(string $id, Closure $closure)
+    public static function override(string $id, Closure $closure): mixed
     {
         $value = null;
         if (self::has($id)) {

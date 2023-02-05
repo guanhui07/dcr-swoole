@@ -60,7 +60,7 @@ class TestController extends Controller
      * @return int[]
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/response")]
-    public function testResponse()
+    public function testResponse(): array
     {
 //       return $this->response->end([1,2]);
         return [1, 2];
@@ -71,7 +71,7 @@ class TestController extends Controller
      * @return array
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/test_redis")]
-    public function testRedis()
+    public function testRedis(): array
     {
         $this->redis->setex('test_key1', 23, 'test111');
         var_dump($this->redis->get('test_key1'));
@@ -179,34 +179,7 @@ class TestController extends Controller
         );
     }
 
-    /**
-     * 测试 dto
-     */
-    #[RequestMapping(methods: "GET , POST", path:"/test/dto")]
-    public function dto($request, $response)
-    {
-        arrayToEntity([
-            "msg" => "dsfdf",
-            "user_id" => 222,
 
-        ], new TestEntity());
-
-        $settleConfig = new TestEntity([
-            "msg" => "dsfdf",
-            "user_id" => 222,
-            'gift' => new ExchGiftInfo([
-                'id' => 1,
-                'name' => 'test',
-            ]),
-        ]);
-        $id = $this->dtoParam($settleConfig);
-        return $id;
-    }
-
-    protected function dtoParam(TestEntity $testEntity)
-    {
-        return $testEntity->gift->id;
-    }
 
     #[RequestMapping(methods: "GET , POST", path:"/test/config")]
     public function config()
@@ -219,7 +192,7 @@ class TestController extends Controller
      * @see  https://github.com/inhere/php-event-manager
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/event")]
-    public function event($request, $response)
+    public function event($request, $response): array
     {
         $params = [
             'test' => 23,
@@ -238,7 +211,7 @@ class TestController extends Controller
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/guzzle")]
-    public function guzzle($request, $response)
+    public function guzzle($request, $response): string
     {
 //        $client = di()->get(\GuzzleHttp\Client::class);
         $client = $this->guzzleClient;
@@ -250,7 +223,7 @@ class TestController extends Controller
     }
 
     #[RequestMapping(methods: "GET , POST", path:"/test/trans")]
-    public function trans($request, $response)
+    public function trans($request, $response): array
     {
         DB::transaction(function () {
             UserModel::query()->where('id', 10000)->increment('open_box');
@@ -327,15 +300,14 @@ class TestController extends Controller
      * @return array
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/token")]
-    public function token($request, $response)
+    public function token($request, $response): array
     {
-        $token = JwtToken::encode([
+        $token = di()->get(JwtToken::class)->encode([
             'uid' => 27,
             'name' => 'test',
         ]);
 //        $token = '1813bef4c03caef6ec45380a7246d110';
-        $data = JwtToken::decode($token);
-        return $data;
+        return di()->get(JwtToken::class)->decode($token);
     }
 
     /**
@@ -345,8 +317,37 @@ class TestController extends Controller
      * @see  https://wiki.swoole.com/#/http_server?id=files
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/upload")]
-    public function upload($request, $response)
+    public function upload($request, $response): array
     {
         return [];
+    }
+
+    /**
+     * 测试 dto
+     */
+    #[RequestMapping(methods: "GET , POST", path:"/test/dto")]
+    public function dto($request, $response)
+    {
+        arrayToEntity([
+            "msg" => "dsfdf",
+            "user_id" => 222,
+
+        ], new TestEntity());
+
+        $settleConfig = new TestEntity([
+            "msg" => "dsfdf",
+            "user_id" => 222,
+            'gift' => new ExchGiftInfo([
+                'id' => 1,
+                'name' => 'test',
+            ]),
+        ]);
+        $id = $this->dtoParam($settleConfig);
+        return $id;
+    }
+
+    protected function dtoParam(TestEntity $testEntity): int
+    {
+        return $testEntity->gift->id;
     }
 }

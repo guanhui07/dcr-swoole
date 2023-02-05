@@ -9,32 +9,32 @@ use Monolog\Logger;
 
 class Log
 {
-    public function info($str)
+    public function info($str): void
     {
         $log = $this->getLogger(Logger::INFO);
         $log->warning((string)$str);
     }
 
-    public function debug($str)
+    public function debug($str): void
     {
         $log = $this->getLogger(Logger::INFO);
         $log->warning((string)$str);
     }
 
-    public function warning($str)
+    public function warning($str): void
     {
         $log = $this->getLogger(Logger::WARNING);
         $log->warning((string)$str);
     }
 
-    public function error($str)
+    public function error($str): void
     {
         $log = $this->getLogger(Logger::ERROR);
         // add records to the log
         $log->error((string)$str);
     }
 
-    public function write($str, $config = '')
+    public function write($str, $config = ''): void
     {
         $this->error($str);
     }

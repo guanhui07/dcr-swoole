@@ -2,6 +2,8 @@
 
 namespace App\Utils;
 
+use DcrSwoole\Config\Config;
+
 /**
  * Class Enviroment
  */
@@ -9,7 +11,7 @@ class Enviroment
 {
     public static function isProd()
     {
-        return di()->get(\DcrSwoole\Config\Config::class)->get('app.env') === 'prod';
+        return di()->get(Config::class)->get('app.env') === 'prod';
     }
 
     public static function isRoyeeDev($name='test')
@@ -20,13 +22,13 @@ class Enviroment
         return false;
     }
 
-    public static function isDev()
+    public static function isDev(): bool
     {
-        return di()->get(\DcrSwoole\Config\Config::class)->get('app.env') === 'dev';
+        return di()->get(Config::class)->get('app.env') === 'dev';
     }
 
-    public static function isLocal()
+    public static function isLocal(): bool
     {
-        return di()->get(\DcrSwoole\Config\Config::class)->get('app.env') === 'local';
+        return di()->get(Config::class)->get('app.env') === 'local';
     }
 }

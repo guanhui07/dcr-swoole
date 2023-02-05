@@ -19,7 +19,7 @@ class BalancePayConsumer extends MqConsumer implements BaseConsumerInterface
     public static array $params = [];
     public string $desc = 'balance_pay消费者';
     //模块
-    public $module = 'balance_pay';
+    public string $module = 'balance_pay';
 
     public function __construct()
     {
@@ -50,7 +50,7 @@ class BalancePayConsumer extends MqConsumer implements BaseConsumerInterface
      *
      * @return bool
      */
-    public function dealData(array $data)
+    public function dealData(array $data): bool
     {
         self::$params = $params = $data['params'] ?? [];
         self::$user = $data['user'] ?? [];

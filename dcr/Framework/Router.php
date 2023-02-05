@@ -299,7 +299,7 @@ class Router
     /**
      * @param RouteObject $route
      */
-    public function collect(RouteObject $route)
+    public function collect(RouteObject $route): void
     {
         $this->routes[] = $route;
     }
@@ -387,7 +387,7 @@ class Router
      * @param mixed $paths
      * @return void
      */
-    public static function load($paths)
+    public static function load($paths): void
     {
         if (!is_array($paths)) {
             return;
@@ -427,7 +427,7 @@ class Router
      * @param RouteCollector $route
      * @return void
      */
-    public static function setCollector(RouteCollector $route)
+    public static function setCollector(RouteCollector $route): void
     {
         static::$collector = $route;
     }
@@ -438,7 +438,7 @@ class Router
      * @param string $plugin
      * @return void
      */
-    public static function fallback(callable $callback, string $plugin = '')
+    public static function fallback(callable $callback, string $plugin = ''): void
     {
         static::$fallback[$plugin] = $callback;
     }
@@ -453,11 +453,4 @@ class Router
         return static::$fallback[$plugin] ?? null;
     }
 
-    /**
-     * @return void
-     * @deprecated
-     */
-    public static function container()
-    {
-    }
 }

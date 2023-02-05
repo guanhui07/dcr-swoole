@@ -12,13 +12,13 @@ use Monolog\Logger;
  */
 class LogBase
 {
-    public static function info($str)
+    public static function info($str): void
     {
         $log = self::getLogger(Logger::INFO);
         $log->warning((string)$str);
     }
 
-    public static function debug($str)
+    public static function debug($str): void
     {
         $log = self::getLogger(Logger::INFO);
         $log->warning((string)$str);
@@ -30,14 +30,14 @@ class LogBase
         $log->warning((string)$str);
     }
 
-    public static function error($str)
+    public static function error($str): void
     {
         $log = self::getLogger(Logger::ERROR);
         // add records to the log
         $log->error((string)$str);
     }
 
-    public static function write($str, $config = '')
+    public static function write($str, $config = ''): void
     {
         self::error($str);
     }

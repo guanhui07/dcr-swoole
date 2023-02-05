@@ -18,7 +18,7 @@ class UserRepository extends AbstractRepository
         return UserModel::class;
     }
 
-    public function test($arr)
+    public function test($arr): array
     {
         return [1];
     }

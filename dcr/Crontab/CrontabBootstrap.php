@@ -20,7 +20,7 @@ class CrontabBootstrap
      * @throws DependencyException
      * @throws NotFoundException
      */
-    public function run()
+    public function run(): void
     {
         if (di()->get(\DcrSwoole\Config\Config::class)->get('crontab.enable') === true) {
             $crontab = new CrontabDispatcherProcess();

@@ -29,7 +29,7 @@ class IndexController extends Controller
     }
 
     #[RequestMapping(methods: "GET , POST", path:"/index/test1")]
-    public function test()
+    public function test(): string
     {
         return 'hello world';
     }
@@ -42,7 +42,7 @@ class IndexController extends Controller
      */
     #[RequestMapping(methods: "GET , POST", path:"/index/test2")]
     #[Middlewares(AuthMiddleware::class, TestMiddleware::class)]
-    public function test2()
+    public function test2(): string
     {
         return 'test 1121';
     }

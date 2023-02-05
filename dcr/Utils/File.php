@@ -20,7 +20,7 @@ class File extends SplFileInfo
             $error = $msg;
         });
         $path = pathinfo($destination, PATHINFO_DIRNAME);
-        if (!is_dir($path) && !mkdir($path, 0777, true)) {
+        if (!is_dir($path) && !mkdir($path, 0777, true) && !is_dir($path)) {
             restore_error_handler();
             throw new RuntimeException(sprintf('Unable to create the "%s" directory (%s)', $path, strip_tags($error)));
         }

@@ -22,7 +22,7 @@ use ReflectionMethod;
  */
 class RouteAnnotation
 {
-    public function handle()
+    public function handle(): void
     {
         /** @var  $routes *已经设置过路由的uri则忽略 */
         //$routes = Route::getRoutes();
@@ -69,7 +69,7 @@ class RouteAnnotation
                 echo "Class $class_name not found, skip route for it\n";
                 continue;
             }
-            if (floatval(PHP_VERSION) > 8) {
+            if ((float)PHP_VERSION > 8) {
                 $controller = new ReflectionClass($class_name);
                 foreach ($controller->getMethods(ReflectionMethod::IS_PUBLIC) as $k => $reflectionMethod) {
                     $middlewares = '';

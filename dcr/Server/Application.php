@@ -15,7 +15,7 @@ class Application
      */
     protected static string $version = '1.0.0';
 
-    public static function welcome()
+    public static function welcome(): void
     {
         $appVersion = self::$version;
         $swooleVersion = SWOOLE_VERSION;
@@ -26,22 +26,22 @@ class Application
 EOL;
     }
 
-    public static function println($strings)
+    public static function println($strings): void
     {
         echo $strings . PHP_EOL;
     }
 
-    public static function echoSuccess($msg)
+    public static function echoSuccess($msg): void
     {
         self::println('[' . date('Y-m-d H:i:s') . '] [INFO] ' . "\033[32m{$msg}\033[0m");
     }
 
-    public static function echoError($msg)
+    public static function echoError($msg): void
     {
         self::println('[' . date('Y-m-d H:i:s') . '] [ERROR] ' . "\033[31m{$msg}\033[0m");
     }
 
-    public static function run()
+    public static function run(): void
     {
         $container = ApplicationContext::getContainer();
         // 路由分发对象创建

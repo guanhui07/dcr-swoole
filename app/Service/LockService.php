@@ -35,7 +35,7 @@ class LockService
      *
      * @return bool
      */
-    public function lock(string $key, int $expire = 3)
+    public function lock(string $key, int $expire = 3): bool
     {
         return Redis::set($key, 1, ["NX", "EX" => $expire]);
     }

@@ -18,13 +18,13 @@ class TestRepository extends AbstractRepository
         return UserModel::class;
     }
 
-    public function fromRepos()
+    public function fromRepos(): void
     {
         echo PHP_EOL;
         echo 'test Di2';
     }
 
-    public function test1()
+    public function test1(): array
     {
 //        $test = DB::table('user')->where('id', '>', 1)
 //            ->orderBy('id', 'desc')->limit(2)->get(['id']);

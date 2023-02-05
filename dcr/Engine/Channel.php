@@ -11,14 +11,14 @@ class Channel extends \Swoole\Coroutine\Channel
     /**
      * @var bool
      */
-    protected $closed = false;
+    protected bool $closed = false;
 
     public function getCapacity()
     {
         return $this->capacity;
     }
 
-    public function getLength()
+    public function getLength(): int
     {
         return $this->length();
     }
@@ -35,32 +35,32 @@ class Channel extends \Swoole\Coroutine\Channel
         return true;
     }
 
-    public function hasProducers()
+    public function hasProducers(): void
     {
         throw new RuntimeException('Not supported.');
     }
 
-    public function hasConsumers()
+    public function hasConsumers(): void
     {
         throw new RuntimeException('Not supported.');
     }
 
-    public function isReadable()
+    public function isReadable(): void
     {
         throw new RuntimeException('Not supported.');
     }
 
-    public function isWritable()
+    public function isWritable(): void
     {
         throw new RuntimeException('Not supported.');
     }
 
-    public function isClosing()
+    public function isClosing(): bool
     {
         return $this->closed || $this->errCode === SWOOLE_CHANNEL_CLOSED;
     }
 
-    public function isTimeout()
+    public function isTimeout(): bool
     {
         return !$this->closed && $this->errCode === SWOOLE_CHANNEL_TIMEOUT;
     }

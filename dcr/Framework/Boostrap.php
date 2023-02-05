@@ -78,7 +78,7 @@ class Boostrap
     /**
      * boot Redis
      */
-    public function bootRedis()
+    public function bootRedis(): void
     {
         $config = config('redis', []);
         if (!empty($config)) {
@@ -122,7 +122,7 @@ class Boostrap
         }
     }
 
-    protected function bootGuzzle()
+    protected function bootGuzzle(): void
     {
         $container = ApplicationContext::getContainer();
         $client = new Client();

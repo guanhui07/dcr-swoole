@@ -42,9 +42,6 @@ class Controller
     #[Inject]
     public Client $guzzleClient;
 
-    #[Inject]
-    public DataRedis $redis;
-
     public function __construct()
     {
 //        $this->request = di()->get(Request::class);
@@ -66,11 +63,11 @@ class Controller
      * 初始化
      * @return bool
      */
-    protected function init()
+    protected function init(): bool
     {
         $token = self::$params['token'] ?? '';
         if ($token) {
-            $userArr = JwtToken::decode($token);
+            $userArr = di()->get(JwtToken::class)->decode($token);
             if (isset($userArr['id'])) {
                 self::$user['id'] = $userArr['id'];
             }
@@ -87,7 +84,7 @@ class Controller
      * @throws Exception
      * @see https://github.com/middlewares/utils
      */
-    public function middleware($middleware)
+    public function middleware($middleware): void
     {
         $middlewares = Kernel::getMiddlewares();
         $arr = [];
@@ -116,7 +113,7 @@ class Controller
      * @return array
      * @throws ParamsException
      */
-    protected function paramsFilter($params, $validators = [])
+    protected function paramsFilter($params, $validators = []): array
     {
         $validator = Validation::check((array)$params, $validators);
 

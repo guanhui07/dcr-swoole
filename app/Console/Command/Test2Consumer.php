@@ -22,7 +22,7 @@ class Test2Consumer extends \Inhere\Console\Command
 
     protected function execute(Input $input, Output $output)
     {
-        go(function () {
+        go(static function () {
             $producer = new BalancePayConsumer();
             $producer->consumer('balance_pay');
         });

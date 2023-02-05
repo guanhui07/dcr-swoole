@@ -28,7 +28,7 @@ class MiddlewareController extends Controller
 //        $this->middleware(TestMiddleware::class);
     }
 
-    public function index()
+    public function index(): string
     {
         return 'hello world';
     }
@@ -36,7 +36,7 @@ class MiddlewareController extends Controller
 
     #[RequestMapping(methods: "GET , POST", path:"/test/middleware")]
     #[Middlewares(AuthMiddleware::class, TestMiddleware::class)]
-    public function test()
+    public function test(): string
     {
         return 'ok';
     }

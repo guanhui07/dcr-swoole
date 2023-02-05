@@ -7,6 +7,7 @@ namespace App\Traits;
 use App\Utils\Str;
 use DcrSwoole\Log\Log;
 use DcrSwoole\Log\LogBase;
+use DcrSwoole\Utils\DataRedis;
 use DI\Attribute\Inject;
 use guanhui07\SwooleDatabase\Adapter\Manager as DB;
 use Qiniu\Auth as AuthQi;
@@ -14,11 +15,11 @@ use Qiniu\Storage\UploadManager;
 
 trait BaseRequest
 {
-    /**
-     * @var Log
-     */
     #[Inject]
     protected Log $logger;
+
+    #[Inject]
+    public DataRedis $redis;
 
     //只用来调试
     public function log($v, $method = false): bool
@@ -33,14 +34,14 @@ trait BaseRequest
         return true;
     }
 
-    protected function succResponse($response = [], $bool = false)
+    protected function succResponse($response = [], $bool = false): array
     {
         return ([
             'status' => 200, 'message' => 'success', 'content' => $response,
         ]);
     }
 
-    protected function errResponse($response)
+    protected function errResponse($response): array
     {
         return ([
             'status' => 0, 'message' => 'error', 'content' => $response,

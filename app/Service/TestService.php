@@ -26,14 +26,14 @@ class TestService
         $this->userRepository = $userRepository;
     }
 
-    public function testDi()
+    public function testDi(): void
     {
         echo 'test Di';
         echo PHP_EOL;
         $this->testRepository->fromRepos();
     }
 
-    public function test($params)
+    public function test($params): array
     {
         $this->testRepository
             ->originQuery()

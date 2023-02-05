@@ -16,19 +16,19 @@ class EventInstance
     /**
      * @var EventManager
      */
-    public static $ins;
+    public static $eventManager;
 
     /**
      * @throws Exception
      */
-    public static function instance()
+    public static function instance(): EventManager
     {
-        if (!self::$ins) {
+        if (!self::$eventManager) {
             $ins = new EventManager();
-            self::$ins = $ins;
-            return self::$ins;
+            self::$eventManager = $ins;
+            return self::$eventManager;
         }
 
-        return self::$ins;
+        return self::$eventManager;
     }
 }
