@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-use app\Exception\SystemException;
+use App\Exception\SystemException;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 

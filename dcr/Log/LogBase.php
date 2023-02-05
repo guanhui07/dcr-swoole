@@ -8,7 +8,6 @@ use Monolog\Logger;
 
 /**
  * Class Log
- * @package app\Utils
  * @see https://github.com/Seldaek/monolog
  */
 class LogBase

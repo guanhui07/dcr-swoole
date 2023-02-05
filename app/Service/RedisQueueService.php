@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use app\Utils\Json;
-use app\Utils\Redis;
-use DcrSwoole\Db\TinRedis;
+use App\Utils\Json;
+use YiTin\TinRedis;
 
 /**
  * @package app\Service

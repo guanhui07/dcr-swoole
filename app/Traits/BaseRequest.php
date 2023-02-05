@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Traits;
 
-use app\Utils\Str;
+use App\Utils\Str;
 use DcrSwoole\Log\Log;
 use DcrSwoole\Log\LogBase;
 use DI\Attribute\Inject;

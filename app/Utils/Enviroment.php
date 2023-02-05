@@ -4,7 +4,6 @@ namespace App\Utils;
 
 /**
  * Class Enviroment
- * @package app\common\utils
  */
 class Enviroment
 {

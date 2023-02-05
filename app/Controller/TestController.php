@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use app\Event\TestEvent;
+use App\Event\TestEvent;
 use App\Middleware\TestMiddleware;
 use App\Model\GoodModel;
 use App\Model\UserModel;

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Console\Command\Test2;
+use App\Console\Command\Test2Consumer;
+
 /**
  * 所有的命令类注册 类
  * Class Kernel
@@ -17,8 +20,8 @@ class Kernel
     public static function getCommands(): array
     {
         return [
-            \App\Console\Command\Test2::class,
-            \App\Console\Command\Test2Consumer::class,
+            Test2::class,
+            Test2Consumer::class,
         ];
     }
 }

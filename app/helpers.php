@@ -1,6 +1,6 @@
 <?php
 
-use app\Utils\Json;
+use App\Utils\Json;
 use DcrSwoole\Event\EventInstance;
 use DcrSwoole\Utils\ApplicationContext;
 use Doctrine\Common\EventArgs;
@@ -24,7 +24,6 @@ if (!function_exists('debug')) {
         } else {
             var_dump($v);
         }
-        return;
     }
 }
 

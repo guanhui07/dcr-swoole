@@ -7,6 +7,7 @@ namespace App\Repository;
 //不能用laravel的门面 Illuminate\Support\Facades\DB;
 
 use App\Model\UserModel;
+use itxiao6\SwooleDatabase\Adapter\DB;
 
 //use itxiao6\SwooleDatabase\Adapter\Manager as DB ;
 
