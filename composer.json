@@ -35,7 +35,7 @@
     "firebase/php-jwt": "^6.3",
     "gregwar/captcha": "^1.1",
     "guanhui07/database": "^1.1",
-    "guanhui07/dcr-swoole-crontab": "^1.0",
+    "guanhui07/dcr-swoole-crontab": "^1.1",
     "guanhui07/guzzle": "^1.2",
     "guanhui07/redis": "^1.1",
     "inhere/console": "^4.1",
