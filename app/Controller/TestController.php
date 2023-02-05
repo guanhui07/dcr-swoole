@@ -21,7 +21,7 @@ use DcrSwoole\Request\Request;
 use DcrSwoole\Utils\ApplicationContext;
 use DI\Attribute\Inject;
 use Inhere\Validate\Validation;
-use itxiao6\SwooleDatabase\Adapter\Manager as DB;
+use guanhui07\SwooleDatabase\Adapter\Manager as DB;
 use YiTin\TinRedis;
 
 class TestController extends Controller
