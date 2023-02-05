@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Framework;
 
+use App\Exception\RuntimeException;
 use App\Provider\EventServiceProvider;
 use App\Utils\ConfigBase;
 use DcrSwoole\Event\EventInstance;
@@ -100,7 +101,10 @@ class Boostrap
      */
     protected function loadDotEnv(): void
     {
-        $dotenv = Dotenv::createImmutable(PROJECT_ROOT);
+        if (!file_exists(base_path().'.env')) {
+            throw new RuntimeException('.env 不存在,请根据env.example 创建.env文件');
+        }
+        $dotenv = Dotenv::createImmutable(base_path());
         $dotenv->safeLoad();
     }
 

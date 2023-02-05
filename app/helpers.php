@@ -62,7 +62,7 @@ function cException($exception)
     $log_data .= date("Y-m-d H:i:s") . ' ' . $exception->__toString();
 
     writeLog($log_data, 'exception_error');
-    echo 'exception_error';
+    echo $log_data;
     return;
 }
 
