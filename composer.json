@@ -1,5 +1,5 @@
 {
-  "name": "dcr-swoole/framework",
+  "name": "dcrswoole/framework",
   "description": " PHP coroutine framework.",
   "type": "project",
   "license": "MIT",
