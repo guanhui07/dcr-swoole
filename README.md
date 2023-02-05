@@ -72,9 +72,11 @@ ApplicationContext::getContainer()
     }
 ```
 
-### 更多例子
+## 更多文档
+[https://github.com/guanhui07/dcr-swoole/wiki](https://github.com/guanhui07/dcr-swoole/wiki/Home-Page)
 
-/app/Controller/TestController.php
+### 更多例子查看 代码demo
+
 
 ### composer依赖组件
 
