@@ -15,7 +15,7 @@
 
 ### 安装
 ```
-composer create-project dcrswoole/framework
+composer create-project dcrswoole/framework skeleton
 ```
 
 ### 分层 (demo未按此方式)
