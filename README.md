@@ -13,6 +13,11 @@
 - dotenv
 - 支持路由注解 中间件注解
 
+### 安装
+```
+composer create-project dcr_swoole/framework
+```
+
 ### 分层 (demo未按此方式)
 controller -> service ->repository->model
 
