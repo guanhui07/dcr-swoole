@@ -11,7 +11,7 @@
 - collection
 - carbon
 - dotenv
--- 支持路由注解 中间件注解
+- 支持路由注解 中间件注解
 
 ### 分层 (demo未按此方式)
 controller -> service ->repository->model
