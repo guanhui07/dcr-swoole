@@ -5,7 +5,7 @@
 - rabbitmq
 - container
 - event
-- middleware
+- middleware  中间件注解
 - validate
 - monolog
 - collection
