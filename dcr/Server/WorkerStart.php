@@ -9,7 +9,7 @@ use DcrSwoole\Utils\ApplicationContext;
 use Raylin666\Guzzle\Client;
 use Raylin666\Pool\PoolOption;
 use Swoole\Database\RedisConfig;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 class WorkerStart
 {
@@ -25,7 +25,7 @@ class WorkerStart
 
         $config = config('redis', []);
         if (!empty($config)) {
-            TinRedis::initialize(
+            Redis::initialize(
                 (new RedisConfig())
                 ->withHost($config['host'])
                 ->withPort($config['port'])

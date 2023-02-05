@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Utils;
 
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 /**
  * Class DataRedis
@@ -226,6 +226,6 @@ class DataRedis
 {
     public function __call($name, $args)
     {
-        return TinRedis::$name(...$args);
+        return Redis::$name(...$args);
     }
 }

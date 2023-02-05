@@ -19,7 +19,7 @@ use Exception;
 use GuzzleHttp\Client;
 use Inhere\Validate\Validation;
 use Middlewares\Utils\Dispatcher;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 use DI\Attribute\Inject;
 
 class Controller
@@ -55,8 +55,8 @@ class Controller
 //        $this->redis = di()->get(DataRedis::class);
 
         self::$params = (array)di()->get(Request::class)->get() + (array)di()->get(Request::class)->post();
-//        if (isset(self::$params['token']) && TinRedis::get(stripslashes(self::$params['token']))) {
-//            self::$user = TinRedis::get(stripslashes(self::$params['token']));
+//        if (isset(self::$params['token']) && Redis::get(stripslashes(self::$params['token']))) {
+//            self::$user = Redis::get(stripslashes(self::$params['token']));
 //        }
 
         $this->init();

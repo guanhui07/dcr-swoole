@@ -6,7 +6,7 @@ namespace App\Service;
 
 use Exception;
 use RuntimeException;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 /**
  * Class LockService
@@ -37,7 +37,7 @@ class LockService
      */
     public function lock(string $key, int $expire = 3)
     {
-        return TinRedis::set($key, 1, ["NX", "EX" => $expire]);
+        return Redis::set($key, 1, ["NX", "EX" => $expire]);
     }
 
     /**
@@ -47,6 +47,6 @@ class LockService
      */
     public function unlock(string $key): int
     {
-        return TinRedis::del($key);
+        return Redis::del($key);
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Utils\Json;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 /**
  * @package app\Service
@@ -17,12 +17,12 @@ class RedisQueueService
         if (is_array($data)) {
             $data = Json::encode($data);
         }
-        return TinRedis::lPush($key, $data);
+        return Redis::lPush($key, $data);
     }
 
     public static function pop(string $key, int $ttl = 10): array
     {
-        $data = TinRedis::brPop($key, $ttl);
+        $data = Redis::brPop($key, $ttl);
         if (empty($data)) {
             return [];
         }

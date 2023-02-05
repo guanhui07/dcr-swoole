@@ -22,7 +22,7 @@ use DcrSwoole\Utils\ApplicationContext;
 use DI\Attribute\Inject;
 use Inhere\Validate\Validation;
 use guanhui07\SwooleDatabase\Adapter\Manager as DB;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 class TestController extends Controller
 {
@@ -76,8 +76,8 @@ class TestController extends Controller
         $this->redis->setex('test_key1', 23, 'test111');
         var_dump($this->redis->get('test_key1'));
 
-        TinRedis::setex('test_key', 22, 'test redis222');
-//        var_dump(TinRedis::get('test_key'));
+        Redis::setex('test_key', 22, 'test redis222');
+//        var_dump(Redis::get('test_key'));
         return [];
     }
 
@@ -124,8 +124,8 @@ class TestController extends Controller
         $this->testService->testDi();
 
         //测试redis
-        TinRedis::setex('test_key', 22, 'test redis');
-//        var_dump(TinRedis::get('test_key'));
+        Redis::setex('test_key', 22, 'test redis');
+//        var_dump(Redis::get('test_key'));
         return $this->response->end([
             'method' => $request->server['request_method'],
             'message' => $allProject,

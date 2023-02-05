@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Utils;
 
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 class Cache
 {
     public static function set(string $key, $value, $ttl = null)
     {
-        return TinRedis::setex($key, $ttl, serialize($value));
+        return Redis::setex($key, $ttl, serialize($value));
     }
 
     public static function get(string $key, $default = null)
     {
-        $val = TinRedis::get($key);
+        $val = Redis::get($key);
         if ($val) {
             return unserialize($val);
         }
@@ -24,6 +24,6 @@ class Cache
 
     public static function delete($key)
     {
-        return TinRedis::del($key);
+        return Redis::del($key);
     }
 }

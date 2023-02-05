@@ -14,7 +14,7 @@ use guanhui07\SwooleDatabase\PoolManager;
 use Raylin666\Guzzle\Client;
 use Raylin666\Pool\PoolOption;
 use Swoole\Database\RedisConfig;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 /**
  * 初始化 注册 各种 env config orm 门面 事件
@@ -82,7 +82,7 @@ class Boostrap
     {
         $config = config('redis', []);
         if (!empty($config)) {
-            TinRedis::initialize(
+            Redis::initialize(
                 (new RedisConfig())
                 ->withHost($config['host'])
                 ->withPort($config['port'])

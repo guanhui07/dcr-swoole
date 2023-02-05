@@ -6,7 +6,7 @@ use DcrSwoole\Utils\ApplicationContext;
 use Doctrine\Common\EventArgs;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
-use YiTin\TinRedis;
+use DcrRedis\Redis;
 
 if (!function_exists('debug')) {
     function debug($v)
@@ -306,11 +306,11 @@ function errorx($message = '失败', $code = 404, $data = '')
 if (!function_exists('cache')) {
     function cache($key, Closure $closure, $ttl = null)
     {
-        if ($result = TinRedis::get($key)) {
+        if ($result = Redis::get($key)) {
             return unserialize($result);
         }
         $result = $closure($ttl);
-        TinRedis::set($key, serialize($result), $ttl);
+        Redis::set($key, serialize($result), $ttl);
         return $result;
     }
 }
