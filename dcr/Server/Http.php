@@ -109,6 +109,7 @@ class Http
         Context::set('SwResponse', $response);
         Request::setRequest();
         Response::setResponse();
+        //请求时候发布路由
         $this->_route->dispatch($request, $response);
     }
 

@@ -6,7 +6,6 @@ namespace DcrSwoole\Framework;
 
 use App\Exception\RuntimeException;
 use App\Provider\EventServiceProvider;
-use App\Utils\ConfigBase;
 use DcrSwoole\Event\EventInstance;
 use DcrSwoole\Utils\ApplicationContext;
 use Dotenv\Dotenv;

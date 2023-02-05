@@ -11,6 +11,11 @@ use RuntimeException;
 
 use function FastRoute\simpleDispatcher;
 
+/**
+ * 不用简单路由模式
+ * Class SimpleRoute
+ * @package DcrSwoole\Server\Protocol\HTTP
+ */
 class SimpleRoute
 {
     private static $instance;
@@ -21,6 +26,8 @@ class SimpleRoute
 
     private static $cache = [];
 
+    public static $uriToMiddlewares = [];
+
     private function __construct()
     {
     }
@@ -29,9 +36,8 @@ class SimpleRoute
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
-
+            // 配置文件获取
             di()->get(\DcrSwoole\Config\Config::class)->get('routes', []);
-//            self::$config = Config::getInstance()->get('routes', []);
             self::$config = [];
 
             $annotations = Router::getRoutes();
@@ -41,7 +47,11 @@ class SimpleRoute
 //                        $routerCollector->addRoute($routerDefine[0], $routerDefine[1], $routerDefine[2]);
 //                    }
                     foreach ($annotations as $routerDefine) {
-                        $routerCollector->addRoute($routerDefine[0], $routerDefine[1], $routerDefine[2]);
+//                        $routerCollector->addRoute($routerDefine[0], $routerDefine[1], $routerDefine[2]);
+                        $routerCollector->addRoute($routerDefine->getMethods(), $routerDefine->getPath(), $routerDefine->getCallback());
+
+                        self::$uriToMiddlewares[$routerDefine->getPath()] = $routerDefine->getMiddleware();
+
                     }
                 }
             );
@@ -67,8 +77,7 @@ class SimpleRoute
         $routeInfo = self::$dispatcher->dispatch($method, $uri);
 
         switch ($routeInfo[0]) {
-            // Dispatcher::FOUND
-            case 1:
+            case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
                 $vars = $routeInfo[2];
 

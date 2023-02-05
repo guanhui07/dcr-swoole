@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Server;
 
+use DcrSwoole\Annotation\RouteAnnotation;
 use DcrSwoole\Framework\Boostrap;
 use DcrSwoole\Utils\ApplicationContext;
 
@@ -43,11 +44,11 @@ EOL;
     public static function run()
     {
         $container = ApplicationContext::getContainer();
-        //路由 ?
-        \DcrSwoole\Framework\Router::load([PROJECT_ROOT.'routes']);
+        // 路由分发对象创建
+        \DcrSwoole\Framework\Router::load([base_path().'routes']);
 
-        //注解路由 add route
-        require_once(PROJECT_ROOT.'dcr/Annotation/route.php');
+        // 扫描控制器目录 注解路由 解析 add route
+        $container->get(RouteAnnotation::class)->handle();
 
 //        // 初始化 注册 config env  db orm
         /** @var Boostrap $bootstrap */

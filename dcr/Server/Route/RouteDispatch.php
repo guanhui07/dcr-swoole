@@ -20,8 +20,14 @@ use FastRoute\Dispatcher;
 use RuntimeException;
 use Throwable;
 
+use function array_reverse;
 use function FastRoute\simpleDispatcher;
 
+/**
+ * 路由分发
+ * Class RouteDispatch
+ * @package DcrSwoole\Server\Route
+ */
 class RouteDispatch
 {
     private static $instance;
@@ -39,14 +45,12 @@ class RouteDispatch
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
-            // 路由
+            // 配置文件获取 路由
             di()->get(\DcrSwoole\Config\Config::class)->get('routes', []);
-//            self::$config = Config::getInstance()->get('routes', []);
             self::$config = [];
 
+            // 获取所有配置文件的路由 和 注解路由
             $annotations = Router::getRoutes();
-
-//            print_r($annotations);
 
             self::$dispatcher = simpleDispatcher(
                 function (\FastRoute\RouteCollector $routerCollector) use ($annotations) {
@@ -68,7 +72,7 @@ class RouteDispatch
         return self::$instance;
     }
 
-    public function middleware($middleware)
+    public function middleware($middleware): void
     {
         $middlewares = Kernel::getMiddlewares();
         $arr = [];
@@ -94,23 +98,25 @@ class RouteDispatch
     {
         try {
             if ($uri) {
-                $route_middlewares = \array_reverse(self::$uriToMiddlewares[$uri]);
-//                var_dump($route_middlewares);
+                $route_middlewares = array_reverse(self::$uriToMiddlewares[$uri]);
                 foreach ($route_middlewares as $class_name) {
                     $this->middleware($class_name);
                 }
             }
         } catch (Exception $e) {
-            return di()->get(Response::class)->end(
-                Json::encode(['msg' => $e->getMessage(), 'code' => 11211])
-            );
+            throw $e;
+//            return di()->get(Response::class)->end(
+//                Json::encode(['msg' => $e->getMessage(), 'code' => 11211])
+//            );
         }
     }
+
     /**
-     * @param $request
-     * @param $response
+     * 请求分发路由
+     * @param \Swoole\Http\Request $request
+     * @param \Swoole\Http\Response $response
      * @return mixed|void
-     * @throws \Exception
+     * @throws Exception
      */
     public function dispatch($request, $response)
     {
@@ -126,6 +132,7 @@ class RouteDispatch
                 $response->status(405);
                 return $response->end();
             case Dispatcher::FOUND:
+                // 先经过 中间件处理
                 $this->doMiddleWares($uri);
                 $handler = $routeInfo[1];
                 $vars = $routeInfo[2];
@@ -186,7 +193,7 @@ class RouteDispatch
                         }
 
                         return $middlewareHandler($request, $response, $vars ?? null);
-                    } catch (\Exception $e) {
+                    } catch (Exception $e) {
                         return $response->end(
                             Json::encode(['msg' => $e->getMessage(), 'code' => 11211])
                         );

@@ -90,7 +90,6 @@ class SimpleResponse
         }
 
         $head = "HTTP/{$version} {$status} {$reason}\r\n";
-        $headers = $headers;
         if (!isset($headers['Server'])) {
             $head .= "Server: simps-http-server\r\n";
         }
