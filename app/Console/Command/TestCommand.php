@@ -14,11 +14,11 @@ use Toolkit\PFlag\FlagsParser;
 /**
  * Class Test2
  * @package app\Console\Command
- * php artisan test2
+ * php artisan test
  */
-class Test2 extends Command
+class TestCommand extends Command
 {
-    protected static string $name = 'test2';
+    protected static string $name = 'test';
 
     protected static string $desc = 'print system ENV information';
 

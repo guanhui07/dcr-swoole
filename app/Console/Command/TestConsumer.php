@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Console\Command;
 
 use App\Service\Consumer\BalancePayConsumer;
+use Inhere\Console\Command;
 use Inhere\Console\IO\Input;
 use Inhere\Console\IO\Output;
 
 /**
  * 测试使用 rabbitmq 消费者
- * Class Test2Consumer
  * @package app\Console\Command
- * php artisan test2_consumer
+ * php artisan test_consumer
  */
-class Test2Consumer extends \Inhere\Console\Command
+class TestConsumer extends Command
 {
-    protected static string $name = 'test2_consumer';
+    protected static string $name = 'test_consumer';
 
     protected static string $desc = 'print system ENV information';
 

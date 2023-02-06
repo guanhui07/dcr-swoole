@@ -23,7 +23,7 @@ class MqController extends Controller
      * @throws Exception
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/mq")]
-    public function test1(): array
+    public function test(): array
     {
         $queueParam = ['test' => 111];
         $producer = new MqProducer();
