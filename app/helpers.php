@@ -415,17 +415,10 @@ if (!function_exists('containerNew')) {
     }
 }
 
-function event(string $eventName = '', array $eventArgs = []): bool
+function event($event,string $eventName = ''): bool
 {
-    $eventManager = EventInstance::instance();
-
-    // EventServiceProvider 中配置
-    //        $testEvent = new TestEvent($eventManager);
-    //        $eventManager->addEventSubscriber(new TestEventListener());
-
-    $eventArgsObj = EventArgs::getEmptyInstance();
-    $eventArgsObj->params = $eventArgs;
-    $eventManager->dispatchEvent($eventName, $eventArgsObj);
+    $dispatcher = EventInstance::instance();
+    $dispatcher->dispatch($event, $eventName);
     return true;
 }
 

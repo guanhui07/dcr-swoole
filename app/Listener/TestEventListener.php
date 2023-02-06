@@ -1,28 +1,16 @@
 <?php
-
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Listener;
 
-use Doctrine\Common\EventSubscriber;
+use App\Event\TestEvent;
+use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * 事件
- * @see  https://www.doctrine-project.org/projects/doctrine-event-manager/en/latest/reference/index.html#setup
- */
-final class TestEventListener implements EventSubscriber
+class TestEventListener implements BaseListenerInterface
 {
-    /** @var bool */
-    public bool $preFooInvoked = false;
-
-    public function preFoo(): void
+    public function process(object $event)
     {
-        $this->preFooInvoked = true;
-    }
-
-    public function getSubscribedEvents(): array
-    {
-        return [];
-        //        return [TestEvent::preFoo];
+        echo '打印参数'.PHP_EOL;
+        var_dump($event->getParams());
     }
 }

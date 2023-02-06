@@ -113,13 +113,14 @@ class Boostrap
      */
     protected function loadEvents(): void
     {
-        $eventManager = EventInstance::instance();
+        $dispatcher = EventInstance::instance();
         $configs = EventServiceProvider::getEventConfig();
-
-        foreach ($configs as $event => $listeners) {
-            new $event($eventManager);
-            $eventManager->addEventSubscriber(new $listeners());
+        foreach($configs as $eventClass =>$listenerClass)
+        {
+            $listener = new  $listenerClass();
+            $dispatcher->addListener($eventClass::NAME, [$listener, 'process']);
         }
+
     }
 
     protected function bootGuzzle(): void

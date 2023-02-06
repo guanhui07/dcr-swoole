@@ -1,5 +1,5 @@
 {
-  "name": "dcrswoole/framework",
+  "name": "dcr_swoole/framework",
   "description": " PHP coroutine framework.",
   "type": "project",
   "license": "MIT",
@@ -29,7 +29,6 @@
     "ext-simplexml": "*",
     "ext-swoole": ">=4.8",
     "doctrine/annotations": "^2.0",
-    "doctrine/event-manager": "^1.1",
     "doctrine/migrations": "^3.5",
     "elasticsearch/elasticsearch": "7.16",
     "firebase/php-jwt": "^6.3",

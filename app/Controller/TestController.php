@@ -197,8 +197,8 @@ class TestController extends Controller
         $params = [
             'test' => 23,
         ];
-
-        event(TestEvent::preFoo, $params);
+        event(new TestEvent($params),TestEvent::NAME);
+        // 初始化事件分发器
         return [];
     }
 

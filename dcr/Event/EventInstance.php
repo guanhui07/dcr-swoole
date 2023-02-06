@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Event;
 
-use Doctrine\Common\EventManager;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Exception;
 
 /**
@@ -13,18 +13,16 @@ use Exception;
  */
 class EventInstance
 {
-    /**
-     * @var EventManager
-     */
+
     public static $eventManager;
 
     /**
      * @throws Exception
      */
-    public static function instance(): EventManager
+    public static function instance(): EventDispatcher
     {
         if (!self::$eventManager) {
-            $ins = new EventManager();
+            $ins = new EventDispatcher;
             self::$eventManager = $ins;
             return self::$eventManager;
         }
