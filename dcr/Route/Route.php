@@ -20,17 +20,17 @@ class Route
     /**
      * @var string|null
      */
-    protected $name = null;
+    protected ?string $name = null;
 
     /**
      * @var array
      */
-    protected $methods = [];
+    protected array $methods = [];
 
     /**
      * @var string
      */
-    protected $path = '';
+    protected string $path = '';
 
     /**
      * @var callable
@@ -40,12 +40,12 @@ class Route
     /**
      * @var array
      */
-    protected $middlewares = [];
+    protected array $middlewares = [];
 
     /**
      * @var array
      */
-    protected $params = [];
+    protected array $params = [];
 
     /**
      * Route constructor.
