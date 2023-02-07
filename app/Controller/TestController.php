@@ -189,7 +189,6 @@ class TestController extends Controller
 
     /**
      * 测试事件
-     * @see  https://github.com/inhere/php-event-manager
      */
     #[RequestMapping(methods: "GET , POST", path:"/test/event")]
     public function event($request, $response): array
