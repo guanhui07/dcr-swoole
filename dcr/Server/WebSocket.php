@@ -14,7 +14,6 @@ class WebSocket
 
     protected $_config;
 
-    /** @var \DcrSwoole\Route */
     protected $_route;
 
     public function __construct()

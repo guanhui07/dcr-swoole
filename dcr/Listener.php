@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole;
 
+use DcrSwoole\Config\Config;
 use Exception;
 
 class Listener
@@ -16,7 +17,7 @@ class Listener
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
-            self::$config = di()->get(\DcrSwoole\Config\Config::class)->get('listeners');
+            self::$config = di()->get(Config::class)->get('listeners');
         }
         return self::$instance;
     }
@@ -29,7 +30,7 @@ class Listener
             try {
                 $class::getInstance()->{$func}(...$args);
             } catch (Exception $e) {
-                throw new Exception($e->getMessage());
+                throw new \RuntimeException($e->getMessage());
             }
         }
     }

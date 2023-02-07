@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Server;
 
-use App\Utils\ConfigBase;
 use DcrSwoole\Crontab\CrontabBootstrap;
 use DcrSwoole\Listener;
 use DcrSwoole\Request\Request;
@@ -13,7 +12,6 @@ use DcrSwoole\Server\Protocol\HTTP\SimpleRoute;
 use DcrSwoole\Server\Route\RouteDispatch;
 use DcrSwoole\Utils\ApplicationContext;
 use DcrSwoole\Utils\Context;
-use DcrSwooleCrontab\Process\CrontabDispatcherProcess;
 use Swoole\Http\Server;
 use Swoole\Server as HttpServer;
 

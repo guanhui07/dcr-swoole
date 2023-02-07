@@ -15,7 +15,7 @@ class WorkerStart
 {
     use Singleton;
 
-    public function workerStart($server, $workerId)
+    public function workerStart($server, $workerId): void
     {
         $container = ApplicationContext::getContainer();
         $config = config('db', []);

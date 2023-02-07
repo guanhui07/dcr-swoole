@@ -30,6 +30,9 @@ use function FastRoute\simpleDispatcher;
  */
 class RouteDispatch
 {
+    /**
+     * @var RouteDispatch
+     */
     private static $instance;
 
     private static $config;
