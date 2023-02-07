@@ -6,13 +6,14 @@ namespace App\Middleware;
 
 use App\Middleware\Contract\MiddlewareInterface;
 use App\Model\UserModel;
+use Closure;
 use DcrSwoole\Log\LogBase;
 use DcrSwoole\Request\Request;
 use RuntimeException;
 
 class AuthMiddleware implements MiddlewareInterface
 {
-    public function handle(): \Closure
+    public function handle(): Closure
     {
         return static function ($request, $next) {
             echo 'auth login middleware';

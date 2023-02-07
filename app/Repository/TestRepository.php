@@ -8,7 +8,6 @@ namespace App\Repository;
 
 use App\Model\UserModel;
 use guanhui07\SwooleDatabase\Adapter\DB;
-
 //use guanhui07\SwooleDatabase\Adapter\Manager as DB ;
 
 class TestRepository extends AbstractRepository

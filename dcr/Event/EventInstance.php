@@ -9,7 +9,7 @@ use Exception;
 
 /**
  * 事件 监听  底层观察者模式
- * @see  https://www.doctrine-project.org/projects/doctrine-event-manager/en/latest/reference/index.html#setup
+ * @see https://code.tutsplus.com/tutorials/handling-events-in-your-php-applications-using-the-symfony-eventdispatcher-component--cms-31328
  */
 class EventInstance
 {

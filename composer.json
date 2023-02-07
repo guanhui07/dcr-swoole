@@ -51,6 +51,7 @@
     "qiniu/php-sdk": "^7.7",
     "spatie/image": "^2.2",
     "symfony/finder": "^5.0",
+    "symfony/event-dispatcher": "^6.2",
     "vlucas/phpdotenv": "^5.4"
   },
   "require-dev": {

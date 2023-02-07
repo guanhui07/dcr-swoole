@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Middleware;
 
 use App\Middleware\Contract\MiddlewareInterface;
+use Closure;
 use DcrSwoole\Log\LogBase;
 use DcrSwoole\Request\Request;
 use RuntimeException;
 
 class TestMiddleware implements MiddlewareInterface
 {
-    public function handle(): \Closure
+    public function handle(): Closure
     {
         return static function ($request, $next) {
             $data = Request::instance()->get;
