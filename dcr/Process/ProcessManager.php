@@ -13,12 +13,12 @@ class ProcessManager
     /**
      * @var array
      */
-    protected static $processes = [];
+    protected static array $processes = [];
 
     /**
      * @var bool
      */
-    protected static $running = true;
+    protected static bool $running = true;
 
     public static function register($process): void
     {

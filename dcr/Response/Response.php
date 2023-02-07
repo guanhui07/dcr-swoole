@@ -20,9 +20,9 @@ class Response
     public static $response;
 
     /**
-     * @return mixed
+     * @return \Swoole\Http\Response
      */
-    public static function instance(): mixed
+    public static function instance(): \Swoole\Http\Response
     {
         if (!self::$response) {
             /**
@@ -36,7 +36,7 @@ class Response
         return self::$response;
     }
 
-    public static function setResponse()
+    public static function setResponse(): void
     {
         $ins = Context::get('SwResponse');
         self::$response = $ins;
@@ -68,7 +68,7 @@ class Response
         if (is_array($data)) {
             $data = Json::encode($data);
         }
-        if ($data instanceof Response) {
+        if ($data instanceof self) {
         }
         return @self::$response->end($data);
     }

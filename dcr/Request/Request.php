@@ -19,9 +19,9 @@ class Request
     public static $request;
 
     /**
-     * @return mixed|\Swoole\Http\Request|null
+     * @return \Swoole\Http\Request
      */
-    public static function instance(): mixed
+    public static function instance(): \Swoole\Http\Request
     {
         if (!self::$request) {
             $ins = Context::get('SwRequest');
@@ -32,13 +32,13 @@ class Request
         return self::$request;
     }
 
-    public static function setRequest()
+    public static function setRequest(): void
     {
         $ins = Context::get('SwRequest');
         self::$request = $ins;
     }
 
-    public function all()
+    public function all(): array
     {
         return (array)($this->post() + $this->get());
     }
@@ -63,9 +63,9 @@ class Request
      * Input
      * @param string $name
      * @param mixed $default
-     * @return mixed|null
+     * @return mixed
      */
-    public function input(string $name, $default = null)
+    public function input(string $name, $default = null): mixed
     {
         $post = $this->post();
         if (isset($post[$name])) {
@@ -95,9 +95,9 @@ class Request
     /**
      * Except
      * @param array $keys
-     * @return mixed|null
+     * @return mixed
      */
-    public function except(array $keys)
+    public function except(array $keys): mixed
     {
         $all = $this->all();
         foreach ($keys as $key) {
@@ -108,6 +108,8 @@ class Request
 
     /**
      * File
+     * @param null $name
+     * @return array|null
      */
     public function file($name = null)
     {
@@ -152,7 +154,7 @@ class Request
     /**
      * @see https://wiki.swoole.com/#/http_server?id=header
      */
-    public function allHeader()
+    public function allHeader(): array
     {
         return (array)self::$request->header;
     }
@@ -162,12 +164,12 @@ class Request
         return self::$request->cookie[$name] ?? null;
     }
 
-    public function allCookie()
+    public function allCookie(): array
     {
         return (array)self::$request->cookie;
     }
 
-    public function allServer()
+    public function allServer(): array
     {
         return (array)self::$request->server;
     }
@@ -191,7 +193,7 @@ class Request
     /**
      * Get the full URL for the request.
      */
-    public function fullUrl()
+    public function fullUrl(): string
     {
         $uri = $this->allServer()['request_uri'];
         return $uri . '?' . http_build_query($this->get(), '', '&', PHP_QUERY_RFC3986);
