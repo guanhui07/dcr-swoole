@@ -316,6 +316,19 @@ class TestEventListener implements BaseListenerInterface
     }
 ```
 
+或者
+```php
+    #[RequestMapping(methods: "GET , POST", path:"/test/event")]
+    public function event($request, $response): array
+    {
+        $params = [
+            'test' => 23,
+        ];
+        $dispatcher = EventInstance::instance();
+    $dispatcher->dispatch(new TestEvent($params), TestEvent::NAME);
+    }
+```
+
 
 ## 更多文档
 [https://github.com/guanhui07/dcr-swoole/wiki](https://github.com/guanhui07/dcr-swoole/wiki/Home-Page)
