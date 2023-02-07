@@ -7,7 +7,6 @@ use GuzzleHttp\HandlerStack;
 
 /**
  * Class ClientOptions
- * @package Raylin666\Guzzle
  */
 class ClientOptions implements ClientOptionsInterface
 {

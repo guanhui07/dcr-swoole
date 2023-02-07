@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Crontab;
 
+use DcrSwoole\Config\Config;
 use DcrSwooleCrontab\Process\CrontabDispatcherProcess;
 use DI\DependencyException;
 use DI\NotFoundException;
@@ -22,7 +23,7 @@ class CrontabBootstrap
      */
     public function run(): void
     {
-        if (di()->get(\DcrSwoole\Config\Config::class)->get('crontab.enable') === true) {
+        if (di()->get(Config::class)->get('crontab.enable') === true) {
             $crontab = new CrontabDispatcherProcess();
             $crontab->handle();
         }

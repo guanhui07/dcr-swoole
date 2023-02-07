@@ -15,7 +15,6 @@ use GuzzleHttp\Client as GuzzleHttpClient;
 /**
  * Class Client
  * @package Raylin666\Guzzle
- * @see Raylin666\Guzzle
  */
 class Client
 {

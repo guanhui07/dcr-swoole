@@ -34,7 +34,6 @@ use function GuzzleHttp\Promise\rejection_for;
 /**
  * Class CoroutineHandler
  * Http handler that uses Swoole Coroutine as a transport layer.
- * @package Raylin666\Guzzle
  */
 class CoroutineHandler implements HandlerInterface
 {
@@ -44,19 +43,19 @@ class CoroutineHandler implements HandlerInterface
      * 连接池状态是否开启
      * @var bool
      */
-    protected $isOpenPool = false;
+    protected bool $isOpenPool = false;
 
     /**
      * 连接池配置
      * @var PoolOptionInterface|null
      */
-    protected $poolOption;
+    protected ?PoolOptionInterface $poolOption;
 
     /**
      * 连接池
      * @var GuzzlePoolInterface[]|null
      */
-    protected $pool = [];
+    protected ?array $pool = [];
 
     /**
      * 设置连接池

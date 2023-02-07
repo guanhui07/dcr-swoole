@@ -8,9 +8,9 @@ class ConfigNew
 {
     private static $instance;
 
-    private static $config = [];
+    private static array $config = [];
 
-    public static function getInstance()
+    public static function getInstance(): ConfigNew
     {
         if (is_null(self::$instance)) {
             self::$instance = new self();
@@ -21,9 +21,9 @@ class ConfigNew
     /**
      * @param $keys
      * @param null $default
-     * @return null|mixed
+     * @return mixed
      */
-    public function get($keys, $default = null)
+    public function get($keys, $default = null): mixed
     {
         $keys = explode('.', strtolower($keys));
         if (empty($keys)) {

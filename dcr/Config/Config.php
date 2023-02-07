@@ -16,7 +16,7 @@ class Config
 
             $arr = require(base_path() . 'config/' . $tmpArr[0] . '.php');
             $end = end($tmpArr);
-            $arr = Arr::get($arr, $end, '');
+            $arr = Arr::get($arr, $end, $default);
             return $this->dealArr($arr);
         }
 
@@ -35,22 +35,13 @@ class Config
     protected function dealArr(mixed $data): mixed
     {
         if (is_string($data)) {
-            switch (strtolower($data)) {
-                case 'true':
-                case '(true)':
-                    return true;
-                case 'false':
-                case '(false)':
-                    return false;
-                case 'empty':
-                case '(empty)':
-                    return '';
-                case 'null':
-                case '(null)':
-                    return null;
-                default:
-                    return $data;
-            }
+            return match (strtolower($data)) {
+                'true', '(true)' => true,
+                'false', '(false)' => false,
+                'empty', '(empty)' => '',
+                'null', '(null)' => null,
+                default => $data,
+            };
         }
         if (is_array($data)) {
             return $this->processConfigArr($data);
@@ -83,28 +74,19 @@ class Config
      *
      * @return array
      */
-    protected function processConfigArr(array $data)
+    protected function processConfigArr(array $data): array
     {
-        return array_map(function ($value) {
+        return array_map(static function ($value) {
             if (!is_string($value)) {
                 return $value;
             }
-            switch (strtolower($value)) {
-                case 'true':
-                case '(true)':
-                    return true;
-                case 'false':
-                case '(false)':
-                    return false;
-                case 'empty':
-                case '(empty)':
-                    return '';
-                case 'null':
-                case '(null)':
-                    return null;
-                default:
-                    return $value;
-            }
+            return match (strtolower($value)) {
+                'true', '(true)' => true,
+                'false', '(false)' => false,
+                'empty', '(empty)' => '',
+                'null', '(null)' => null,
+                default => $value,
+            };
         }, $data);
     }
 }

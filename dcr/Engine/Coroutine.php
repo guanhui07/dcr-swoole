@@ -52,7 +52,7 @@ class Coroutine
         return $this->id;
     }
 
-    public static function id()
+    public static function id(): int
     {
         return \Swoole\Coroutine::getCid();
     }

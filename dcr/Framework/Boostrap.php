@@ -6,6 +6,7 @@ namespace DcrSwoole\Framework;
 
 use App\Exception\RuntimeException;
 use App\Provider\EventServiceProvider;
+use DcrSwoole\Config\Config;
 use DcrSwoole\Event\EventInstance;
 use DcrSwoole\Utils\ApplicationContext;
 use Dotenv\Dotenv;
@@ -26,7 +27,7 @@ class Boostrap
     public function run(): void
     {
         $this->loadDotEnv();
-        $config = di()->get(\DcrSwoole\Config\Config::class)->get('app');
+        $config = di()->get(Config::class)->get('app');
         !defined('DEBUG') && define('DEBUG', $config['debug']); // online set false
         !defined('DCR_CONFIG') && define('DCR_CONFIG', $config);
 
@@ -61,7 +62,7 @@ class Boostrap
      */
     public function bootstrapOrm(): void
     {
-        $configDb = di()->get(\DcrSwoole\Config\Config::class)->get('db');
+        $configDb = di()->get(Config::class)->get('db');
         $configDb = $configDb['connections']['mysql'];
 
         (new PDOConfig())

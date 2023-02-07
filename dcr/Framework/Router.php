@@ -34,17 +34,17 @@ class Router
     /**
      * @var Router
      */
-    protected static $instance = null;
+    protected static ?Router $instance = null;
 
     /**
      * @var GroupCountBased
      */
-    protected static $dispatcher = null;
+    protected static ?GroupCountBased $dispatcher = null;
 
     /**
      * @var RouteCollector
      */
-    protected static $collector = null;
+    protected static ?RouteCollector $collector = null;
 
     /**
      * @var null|callable
@@ -54,27 +54,27 @@ class Router
     /**
      * @var array
      */
-    protected static $nameList = [];
+    protected static array $nameList = [];
 
     /**
      * @var string
      */
-    protected static $groupPrefix = '';
+    protected static string $groupPrefix = '';
 
     /**
      * @var bool
      */
-    protected static $disableDefaultRoute = [];
+    protected static bool|array $disableDefaultRoute = [];
 
     /**
      * @var RouteObject[]
      */
-    protected static $allRoutes = [];
+    protected static array $allRoutes = [];
 
     /**
      * @var RouteObject[]
      */
-    protected $routes = [];
+    protected array $routes = [];
 
     /**
      * @param string $path
