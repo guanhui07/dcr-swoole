@@ -303,7 +303,7 @@ class TestEventListener implements BaseListenerInterface
 ```
 
 ### 触发事件 
-```
+```php
     #[RequestMapping(methods: "GET , POST", path:"/test/event")]
     public function event($request, $response): array
     {
