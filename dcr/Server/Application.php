@@ -77,7 +77,8 @@ EOL;
                 if (isset($configs[$command[0]], $configs[$command[0]]['class_name'])) {
                     $className = $configs[$command[0]]['class_name'];
                 } else {
-                    exit(self::echoError("command {$command[0]} is not exist, you can use {$argv[0]} [http:start, ws:start,  main:start]"));
+                    self::echoError("command {$command[0]} is not exist, you can use {$argv[0]} [http:start, ws:start,  main:start]");
+                    exit;
                 }
         }
         switch ($command[1]) {

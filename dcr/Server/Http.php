@@ -111,9 +111,12 @@ class Http
         $this->_route->dispatch($request, $response);
     }
 
-    public function onReceive($server, $fd, $from_id, $data)
+    public function onReceive($server, $fd, $from_id, $data): void
     {
-        $this->_route->dispatch($server, $fd, $data);
+        try {
+            $this->_route->dispatch($server, $fd, $data);
+        } catch (\Exception $e) {
+        }
     }
 
     /**

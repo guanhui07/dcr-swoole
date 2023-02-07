@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DcrSwoole\Server\Protocol\HTTP;
 
+use DcrSwoole\Config\Config;
 use DcrSwoole\Framework\Router;
 use DcrSwoole\Utils\ApplicationContext;
 use FastRoute\Dispatcher;
@@ -18,6 +19,9 @@ use function FastRoute\simpleDispatcher;
  */
 class SimpleRoute
 {
+    /**
+     * @var SimpleRoute
+     */
     private static $instance;
 
     private static $config;
@@ -37,7 +41,7 @@ class SimpleRoute
         if (is_null(self::$instance)) {
             self::$instance = new self();
             // 配置文件获取
-            di()->get(\DcrSwoole\Config\Config::class)->get('routes', []);
+            di()->get(Config::class)->get('routes', []);
             self::$config = [];
 
             $annotations = Router::getRoutes();
