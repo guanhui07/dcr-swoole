@@ -11,7 +11,6 @@ use Inhere\Console\IO\Output;
 
 /**
  * 测试使用 rabbitmq 消费者
- * @package app\Console\Command
  * php artisan test_consumer
  */
 class TestConsumer extends Command

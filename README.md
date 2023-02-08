@@ -19,7 +19,7 @@ composer create-project dcrswoole/framework skeleton
 ```
 
 ### 分层 (demo未按此方式)
-controller -> service ->repository->model
+controller->service ->repository->model
 
 ### http:
 

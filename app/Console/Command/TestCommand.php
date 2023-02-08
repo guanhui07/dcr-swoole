@@ -12,8 +12,6 @@ use Inhere\Console\IO\Output;
 use Toolkit\PFlag\FlagsParser;
 
 /**
- * Class Test2
- * @package app\Console\Command
  * php artisan test
  */
 class TestCommand extends Command

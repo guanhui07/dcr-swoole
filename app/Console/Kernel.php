@@ -9,7 +9,6 @@ use App\Console\Command\TestConsumer;
 
 /**
  * 所有的命令类注册 类
- * Class Kernel
  */
 class Kernel
 {
