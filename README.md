@@ -335,6 +335,69 @@ class TestEventListener implements BaseListenerInterface
 
 ### 更多例子查看 代码demo
 
+### ab 本机macbook pro 压测
+```json
+→ ab -k  -n 100000  -c 30 'http://127.0.0.1:9501/test/request'
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        swoole-http-server
+Server Hostname:        127.0.0.1
+Server Port:            9501
+
+Document Path:          /test/request
+Document Length:        4 bytes
+
+Concurrency Level:      30
+Time taken for tests:   1.700 seconds
+Complete requests:      100000
+Failed requests:        0
+Keep-Alive requests:    100000
+Total transferred:      15600000 bytes
+HTML transferred:       400000 bytes
+Requests per second:    58832.04 [#/sec] (mean)
+Time per request:       0.510 [ms] (mean)
+Time per request:       0.017 [ms] (mean, across all concurrent requests)
+Transfer rate:          8962.69 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     0    1   0.3      0      15
+Waiting:        0    0   0.3      0      15
+Total:          0    1   0.3      0      15
+ERROR: The median and mean for the processing time are more than twice the standard
+       deviation apart. These results are NOT reliable.
+ERROR: The median and mean for the total time are more than twice the standard
+       deviation apart. These results are NOT reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      1
+  75%      1
+  80%      1
+  90%      1
+  95%      1
+  98%      1
+  99%      2
+ 100%     15 (longest request)
+```
+
 
 ### composer依赖组件
 
