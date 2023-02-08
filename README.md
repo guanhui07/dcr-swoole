@@ -325,7 +325,7 @@ class TestEventListener implements BaseListenerInterface
             'test' => 23,
         ];
         $dispatcher = EventInstance::instance();
-    $dispatcher->dispatch(new TestEvent($params), TestEvent::NAME);
+        $dispatcher->dispatch(new TestEvent($params), TestEvent::NAME);
     }
 ```
 
