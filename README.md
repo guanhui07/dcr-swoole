@@ -336,7 +336,7 @@ class TestEventListener implements BaseListenerInterface
 ### 更多例子查看 代码demo
 
 ### ab 本机macbook pro 压测 Requests per second:    58832.04 [#/sec] (mean)
-```json
+```
 → ab -k  -n 100000  -c 30 'http://127.0.0.1:9501/test/request'
 This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
