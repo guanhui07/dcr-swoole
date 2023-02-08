@@ -36,7 +36,7 @@ php ./bin/start.php ws:start
 ### console:
 
 ```
-php artisan test2
+php artisan test
 ```
 
 ### crontab:
