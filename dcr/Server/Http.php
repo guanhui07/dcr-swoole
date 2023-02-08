@@ -79,18 +79,26 @@ class Http
 
     public function onStart(HttpServer $server)
     {
+        if ($this->isSupportedOS()) {
+            //swoole_set_process_name('dcr');
+            @cli_set_process_title('dcr');
+        }
         Application::echoSuccess("Swoole Http Server running：http://{$this->_config['ip']}:{$this->_config['port']}");
         Listener::getInstance()->listen('start', $server);
     }
 
     public function onManagerStart(HttpServer $server)
     {
-        Application::echoSuccess("Swoole Http Server running：http://{$this->_config['ip']}:{$this->_config['port']}");
+        Application::echoSuccess("Swoole Http1 Server running：http://{$this->_config['ip']}:{$this->_config['port']}");
         Listener::getInstance()->listen('managerStart', $server);
     }
 
     public function onWorkerStart(HttpServer $server, int $workerId)
     {
+        if ($this->isSupportedOS()) {
+            //swoole_set_process_name('dcr');
+            @cli_set_process_title('dcr');
+        }
         $this->_route = RouteDispatch::getInstance();
         Listener::getInstance()->listen('workerStart', $server, $workerId);
     }
@@ -127,5 +135,10 @@ class Http
     {
         // init crontab
         di()->get(CrontabBootstrap::class)->run();
+    }
+
+    protected function isSupportedOS(): bool
+    {
+        return PHP_OS != 'Darwin';
     }
 }
