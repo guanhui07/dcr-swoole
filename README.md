@@ -1,4 +1,4 @@
-# dcr-swoole框架 - 整合各种包，基于Swoole 实现的框架
+# 整合各种包，基于Swoole 实现的框架
 
 - 集成 laravel orm , restful route, redis, guzzle monolog
 - http websocket
