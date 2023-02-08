@@ -420,7 +420,7 @@ Transfer/sec:     11.83MB
 ### composer依赖组件
 
 ```
-    "doctrine/event-manager": "^1.1",  事件监听
+     "symfony/event-dispatcher": "^6.2",  事件监听 观察者模式
     "doctrine/migrations": "^3.5",  migrate
     "elasticsearch/elasticsearch": "7.16",  es
     "firebase/php-jwt": "^6.3",   jwt token 
