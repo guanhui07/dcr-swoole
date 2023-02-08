@@ -335,7 +335,7 @@ class TestEventListener implements BaseListenerInterface
 
 ### 更多例子查看 代码demo
 
-### ab 本机macbook pro 压测
+### ab 本机macbook pro 压测 Requests per second:    58832.04 [#/sec] (mean)
 ```json
 → ab -k  -n 100000  -c 30 'http://127.0.0.1:9501/test/request'
 This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
@@ -398,6 +398,24 @@ Percentage of the requests served within a certain time (ms)
  100%     15 (longest request)
 ```
 
+## wrk 压测  Requests/sec:  79540.12
+```
+→ wrk -t20 -c300 -d 30s --latency   http://127.0.0.1:9501/test/request
+Running 30s test @ http://127.0.0.1:9501/test/request
+  20 threads and 300 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.56ms   14.05ms 154.35ms   88.96%
+    Req/Sec     4.71k     1.25k   18.48k    82.37%
+  Latency Distribution
+     50%    1.43ms
+     75%    6.30ms
+     90%   23.63ms
+     99%   68.04ms
+  2394042 requests in 30.10s, 356.17MB read
+  Socket errors: connect 67, read 86, write 0, timeout 0
+Requests/sec:  79540.12
+Transfer/sec:     11.83MB
+```
 
 ### composer依赖组件
 
