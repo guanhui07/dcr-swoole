@@ -12,6 +12,7 @@ use App\Repository\TestRepository;
 use App\Service\Entity\ExchGiftInfo;
 use App\Service\Entity\TestEntity;
 use App\Service\TestService;
+use App\Service\UserService;
 use App\Utils\Json;
 use App\Utils\JwtToken;
 use Carbon\Carbon;
@@ -319,6 +320,12 @@ class TestController extends Controller
     public function upload($request, $response): array
     {
         return [];
+    }
+
+    #[RequestMapping(methods: "GET", path:"/test/aop")]
+    public function aop($request, $response): array
+    {
+        return (new UserService())->first();
     }
 
     /**

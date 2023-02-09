@@ -7,6 +7,7 @@ namespace DcrSwoole\Server;
 use DcrSwoole\Annotation\RouteAnnotation;
 use DcrSwoole\Framework\Boostrap;
 use DcrSwoole\Utils\ApplicationContext;
+use Hyperf\AopIntegration\ClassLoader;
 
 class Application
 {
@@ -54,7 +55,8 @@ EOL;
         /** @var Boostrap $bootstrap */
         $bootstrap = $container->make(Boostrap::class);
         $bootstrap->run();
-        // routes 配置
+
+        ClassLoader::init();
 
         self::welcome();
         global $argv;

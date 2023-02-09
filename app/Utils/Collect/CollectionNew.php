@@ -27,7 +27,7 @@ use function value;
  * @since 2.0
  */
 //class CollectionNew  implements ArrayAccess, Arrayable, Countable, IteratorAggregate, Jsonable, JsonSerializable
-class CollectionNew extends Collection
+class CollectionNew
 {
     /**
      * The items contained in the collection.
@@ -769,7 +769,7 @@ class CollectionNew extends Collection
      *
      * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get( $key, $default = null)
     {
         if ($this->offsetExists($key)) {
             return $this->items[$key];
@@ -1270,7 +1270,7 @@ class CollectionNew extends Collection
      * Get and remove the last item from the collection.
      * @return mixed
      */
-    public function pop()
+    public function pop($count =1)
     {
         return array_pop($this->items);
     }

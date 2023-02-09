@@ -37,6 +37,7 @@
     "guanhui07/dcr-swoole-crontab": "^1.1",
     "guanhui07/guzzle": "^1.2",
     "guanhui07/redis": "^1.1",
+    "hyperf/aop-integration": " ^1.1",
     "inhere/console": "^4.1",
     "inhere/php-validate": "^2.8",
     "intervention/image": "^2.7",
@@ -50,8 +51,8 @@
     "php-di/php-di": "^7.0",
     "qiniu/php-sdk": "^7.7",
     "spatie/image": "^2.2",
-    "symfony/finder": "^5.0",
     "symfony/event-dispatcher": "^6.2",
+    "symfony/finder": "^5.0",
     "vlucas/phpdotenv": "^5.4"
   },
   "require-dev": {
