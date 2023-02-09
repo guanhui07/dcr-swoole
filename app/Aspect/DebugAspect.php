@@ -9,6 +9,9 @@ use App\Service\UserService;
 use Hyperf\Di\Aop\ProceedingJoinPoint;
 use Hyperf\Di\Exception\Exception;
 
+/**
+ * 需要再config/config 文件配置 切面类
+ */
 class DebugAspect
 {
     public array $classes = [
