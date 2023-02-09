@@ -330,8 +330,8 @@ class TestEventListener implements BaseListenerInterface
 ```
 
 
-## 更多文档
-[https://github.com/guanhui07/dcr-swoole/wiki](https://github.com/guanhui07/dcr-swoole/wiki/Home-Page)
+## 文档
+[https://github.com/guanhui07/dcr-swoole/wiki](https://github.com/guanhui07/dcr-swoole/wiki)
 
 ### 更多例子查看 代码demo
 
