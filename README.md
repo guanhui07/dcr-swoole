@@ -72,6 +72,7 @@ ApplicationContext::getContainer()
     }
 ```
 
+
 ## 路由注解 和 中间件注解 以及Inject注解  使用
 ```php
 <?php
@@ -96,6 +97,21 @@ class MiddlewareController extends Controller
     {
         return 'hello world';
     }
+}
+```
+
+## 多个中间件注解
+```php
+use app\middleware\App;
+use app\middleware\Log;
+#[RequestMapping(methods: "GET , POST" , path:"/api/json") , Middlewares(App::class , Log::class)]
+public function json(Request $request)
+{
+    return json(['code' => 0, 'msg' => 'ok']);
+}
+public function json(Request $request)
+{
+    return json(['code' => 0, 'msg' => 'ok']);
 }
 ```
 
