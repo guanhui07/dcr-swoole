@@ -16,6 +16,7 @@ class Kernel
         return [
             TestMiddleware::class => TestMiddleware::class,
             AuthMiddleware::class => AuthMiddleware::class,
+            RateLimitMiddleware::class => RateLimitMiddleware::class,
         ];
     }
 }
