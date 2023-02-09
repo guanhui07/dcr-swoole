@@ -74,6 +74,7 @@ class RateLimitHandler
     /**
      * Used during testing to set the current timestamp to use.
      *
+     * @param int $time
      * @return $this
      */
     public function setTestTime(int $time): self
