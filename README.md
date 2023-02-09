@@ -345,6 +345,38 @@ class TestEventListener implements BaseListenerInterface
     }
 ```
 
+## 切面 aop
+```php
+<?php
+namespace App\Aspect;
+
+use App\Service\UserService;
+use Hyperf\Di\Aop\ProceedingJoinPoint;
+use Hyperf\Di\Exception\Exception;
+
+class DebugAspect
+{
+    //要切入的方法 
+    public array $classes = [
+        UserService::class . '::first',
+    ];
+
+    /**
+     * 测试切面
+     * @param ProceedingJoinPoint $proceedingJoinPoint
+     * @return mixed
+     */
+    public function process(ProceedingJoinPoint $proceedingJoinPoint)
+    {
+        var_dump(11);
+        try {
+            return $proceedingJoinPoint->process();
+        } catch (Exception $e) {
+        }
+    }
+}
+
+```
 
 ## 文档
 [https://github.com/guanhui07/dcr-swoole/wiki](https://github.com/guanhui07/dcr-swoole/wiki)
