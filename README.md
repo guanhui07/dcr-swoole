@@ -493,6 +493,7 @@ Transfer/sec:     11.83MB
     "spatie/image": "^2.2",   
     "symfony/finder": "^5.0",   symfony finder
     "vlucas/phpdotenv": "^5.4"  dotenv读取 
+     "hyperf/aop-integration": " ^1.1",    aop切面支持 
 ```
 
 ## 关联
