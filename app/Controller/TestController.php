@@ -325,6 +325,7 @@ class TestController extends Controller
     #[RequestMapping(methods: "GET", path:"/test/aop")]
     public function aop($request, $response): array
     {
+        echo Carbon::now()->toDateTimeString();
         return (new UserService())->first();
     }
 
