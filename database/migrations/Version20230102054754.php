@@ -8,7 +8,7 @@ use App\Model\UserModel;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 use Illuminate\Database\Schema\Blueprint;
-use itxiao6\SwooleDatabase\Adapter\Manager as DB;
+use guanhui07\SwooleDatabase\Adapter\Manager as DB;
 
 //use Illuminate\Support\Facades\DB; // 不能用laravel的门面
 
@@ -33,7 +33,7 @@ final class Version20230102054754 extends AbstractMigration
             $sql = "
             ALTER TABLE `user` comment'user表 test'
             ";
-            \itxiao6\SwooleDatabase\Adapter\DB::statement($sql);
+            \Guanhui07\SwooleDatabase\Adapter\DB::statement($sql);
 
 
             /**

@@ -9,7 +9,7 @@ use DcrSwoole\Log\Log;
 use DcrSwoole\Log\LogBase;
 use DcrSwoole\Utils\DataRedis;
 use DI\Attribute\Inject;
-use guanhui07\SwooleDatabase\Adapter\Manager as DB;
+use Guanhui07\SwooleDatabase\Adapter\Manager as DB;
 use Qiniu\Auth as AuthQi;
 use Qiniu\Storage\UploadManager;
 

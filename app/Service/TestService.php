@@ -9,7 +9,7 @@ use App\Repository\UserRepository;
 use Carbon\Carbon;
 use DcrSwoole\Utils\Parallel;
 use Illuminate\Database\Eloquent\Collection;
-use guanhui07\SwooleDatabase\Adapter\Manager as DB;
+use Guanhui07\SwooleDatabase\Adapter\Manager as DB;
 
 /**
  * Class TestService

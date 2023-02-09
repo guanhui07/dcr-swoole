@@ -7,8 +7,8 @@ namespace App\Repository;
 //不能用laravel的门面 Illuminate\Support\Facades\DB;
 
 use App\Model\UserModel;
-use guanhui07\SwooleDatabase\Adapter\DB;
-//use guanhui07\SwooleDatabase\Adapter\Manager as DB ;
+use Guanhui07\SwooleDatabase\Adapter\DB;
+//use Guanhui07\SwooleDatabase\Adapter\Manager as DB ;
 
 class TestRepository extends AbstractRepository
 {
