@@ -9,6 +9,7 @@ use DcrRedis\Redis;
 class Cache
 {
     /**
+     * @var Cache
      */
     public static $cache;
 
