@@ -53,6 +53,7 @@
     "spatie/image": "^2.2",
     "symfony/event-dispatcher": "^6.2",
     "symfony/finder": "^5.0",
+    "casbin/casbin": "^3.20",
     "vlucas/phpdotenv": "^5.4"
   },
   "require-dev": {

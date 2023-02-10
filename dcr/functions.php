@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 
+use DcrSwoole\Config\Config;
 use DcrSwoole\Utils\ApplicationContext;
 use DcrSwoole\Utils\Collection;
 use DcrSwoole\Utils\Coroutine;
@@ -13,7 +14,7 @@ use DcrSwoole\Utils\Waiter;
 if (!function_exists('config')) {
     function config($name, $default = null)
     {
-        return di()->get(\DcrSwoole\Config\Config::class)->get($name, $default);
+        return di()->get(Config::class)->get($name, $default);
     }
 }
 if (!function_exists('value')) {
