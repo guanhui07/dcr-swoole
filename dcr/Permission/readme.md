@@ -23,3 +23,6 @@ CREATE TABLE `casbin_rule` (
 ```
 
 https://packagist.org/packages/casbin/casbin
+
+https://github.com/donjan-deng/hyperf-casbin
+
