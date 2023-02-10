@@ -21,3 +21,5 @@ CREATE TABLE `casbin_rule` (
     KEY `idx_v5` ( `v5` ) USING BTREE 
 ) ENGINE = INNODB CHARSET = utf8mb4 COMMENT = '策略规则表';
 ```
+
+https://packagist.org/packages/casbin/casbin
