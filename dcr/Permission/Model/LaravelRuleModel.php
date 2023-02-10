@@ -16,6 +16,7 @@ use DcrSwoole\DbConnection\Model;
  */
 class LaravelRuleModel extends Model
 {
+    protected $table = 'casbin_rule';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -50,9 +51,9 @@ class LaravelRuleModel extends Model
      */
     public function __construct(array $data = [])
     {
-        $connection = $this->config('database.connection') ?: config('database.default');
-        $this->setConnection($connection);
-        $this->setTable($this->config('database.rules_table'));
+//        $connection = $this->config('database.connection') ?: config('database.default');
+//        $this->setConnection($connection);
+//        $this->setTable($this->config('database.rules_table'));
         parent::__construct($data);
     }
 
@@ -66,8 +67,8 @@ class LaravelRuleModel extends Model
      */
     protected function config(string $key = null, $default = null)
     {
-        $driver = config('plugin.casbin.permission.permission.default');
-        return config('plugin.casbin.permission.permission.' . $driver . '.' . $key, $default);
+        $driver = config('permission.default');
+        return config('permission.' . $driver . '.' . $key, $default);
     }
 
     /**

@@ -32,6 +32,7 @@ class Container
             $containerBuilder->addDefinitions([
                 //                'route' => \DI\create(Route::class)
             ]);
+//            $containerBuilder->addDefinitions(config('dependence', []));
             // 通过以下方式ContainerBuilder启用属性：php8 原生注解 ,
             // 记得通过 导入属性类use DI\Attribute\Inject;
             $containerBuilder->useAttributes(true);

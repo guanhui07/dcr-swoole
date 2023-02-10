@@ -31,11 +31,11 @@ class RedisWatcher implements Watcher
 
         $this->channel = $config['channel'] ?? '/casbin';
 
-        Redis::subscribe([$this->channel], function ($channel, $message) {
-            if ($this->callback) {
-                call_user_func($this->callback);
-            }
-        });
+//        Redis::subscribe([$this->channel], function ($channel, $message) {
+//            if ($this->callback) {
+//                call_user_func($this->callback);
+//            }
+//        });
     }
 
     /**

@@ -1,0 +1,42 @@
+<?php
+declare(strict_types=1);
+
+
+namespace App\Controller;
+
+
+use DcrSwoole\Annotation\Mapping\RequestMapping;
+use DcrSwoole\Permission\Permission;
+
+class PermissionController extends Controller
+{
+    /**
+     * MqController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    #[RequestMapping(methods: "GET", path:"/permission/test")]
+    public function test(): array
+    {
+        Permission::addPermissionForUser('eve', 'articles', 'read');
+        // adds a role for a user.
+        Permission::addRoleForUser('eve', 'writer');
+        // adds permissions to a rule
+        Permission::addPolicy('writer', 'articles','edit');
+        return apiResponse([]);
+    }
+
+    #[RequestMapping(methods: "GET", path:"/permission/test2")]
+    public function test2(): array
+    {
+        if (Permission::enforce("eve", "articles", "edit")) {
+            echo '恭喜你！通过权限认证';
+        } else {
+            echo '对不起，您没有该资源访问权限';
+        }
+        return apiResponse([]);
+    }
+}

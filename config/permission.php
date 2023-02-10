@@ -1,8 +1,6 @@
 <?php
 /**
  * @desc permission.php 描述信息
- * @author Tinywan(ShaoBo Wan)
- * @date 2022/01/12 20:20
  */
 return [
     'default' => 'basic',
@@ -11,7 +9,7 @@ return [
         // 策略模型Model设置
         'model' => [
             'config_type' => 'file',
-            'config_file_path' => base_path() . 'config//plugin/casbin/webman-permission/rbac-model.conf',
+            'config_file_path' => base_path() . 'config/plugin/casbin/permission/rbac-model.conf',
             'config_text' => '',
         ],
         // 适配器

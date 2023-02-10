@@ -8,6 +8,7 @@ use App\Exception\RuntimeException;
 use App\Provider\EventServiceProvider;
 use DcrSwoole\Config\Config;
 use DcrSwoole\Event\EventInstance;
+use DcrSwoole\Permission\Permission;
 use DcrSwoole\Utils\ApplicationContext;
 use Dotenv\Dotenv;
 use Guanhui07\SwooleDatabase\PDOConfig;
@@ -49,11 +50,19 @@ class Boostrap
         // laravel orm
         $this->bootstrapOrm();
 
+        $this->bootRedis();
+
         // 事件
         $this->loadEvents();
 
         // guzzle
         $this->bootGuzzle();
+
+        Permission::start();
+        // 权限
+//        go(static function (){
+//            Permission::start();
+//        });
     }
 
     /**

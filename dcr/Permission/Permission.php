@@ -9,6 +9,8 @@ use Casbin\Exceptions\CasbinException;
 use Casbin\Model\Model;
 use DcrSwoole\Permission\Adapter\LaravelDatabaseAdapter;
 use DcrSwoole\Permission\Watcher\RedisWatcher;
+use DI\DependencyException;
+use DI\NotFoundException;
 
 //use support\Container;
 //use Workerman\Worker;
@@ -50,23 +52,44 @@ class Permission
 
     public static function start(): void
     {
-        $driver = config('plugin.casbin.permission.permission.default');
-        $config = config('plugin.casbin.permission.permission.' . $driver);
+        $driver = config('permission.default');
+        $config = config('permission.' . $driver);
         $model = new Model();
         if ('file' === $config['model']['config_type']) {
-            $model->loadModel($config['model']['config_file_path']);
+            try {
+                $model->loadModel($config['model']['config_file_path']);
+            } catch (CasbinException $e) {
+                echo $e->getMessage();
+            }
         } elseif ('text' === $config['model']['config_type']) {
-            $model->loadModel($config['model']['config_text']);
+            try {
+                $model->loadModel($config['model']['config_text']);
+            } catch (CasbinException $e) {
+                echo $e->getMessage();
+            }
         }
+//        var_dump($model);
+//        return;;
         if (is_null(static::$_manager)) {
-            static::$_manager = new Enforcer($model, di()->get(LaravelDatabaseAdapter::class), false);
+            try {
+//                static::$_manager = new Enforcer($model, base_path().'config/plugin/casbin/permission/rbac_policy.csv');
+
+                $m = new Enforcer(base_path().'config/plugin/casbin/permission/rbac-model.conf',
+                    base_path().'config/plugin/casbin/permission/rbac_policy.csv');
+                static::$_manager  = $m;
+
+            } catch (CasbinException | DependencyException | NotFoundException $e) {
+                var_dump($e->getMessage());
+                echo 23;die;
+            }
         }
 
-        $watcher = new RedisWatcher(config('redis.default'));
-        static::$_manager->setWatcher($watcher);
-        $watcher->setUpdateCallback(function () {
-            static::$_manager->loadPolicy();
-        });
+//        $watcher = new RedisWatcher(config('redis'));
+//
+//        static::$_manager->setWatcher($watcher);
+//        $watcher->setUpdateCallback(function () {
+//            static::$_manager->loadPolicy();
+//        });
     }
 
     /**

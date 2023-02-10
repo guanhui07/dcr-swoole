@@ -24,7 +24,6 @@ use Throwable;
 /**
  * DatabaseAdapter.
  *
- * @author techlee@qq.com
  */
 class LaravelDatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, FilteredAdapter
 {
