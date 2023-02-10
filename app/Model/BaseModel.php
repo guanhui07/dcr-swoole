@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use Guanhui07\SwooleDatabase\Adapter\Model;
+
+use DcrSwoole\DbConnection\Model;
 
 class BaseModel extends Model
 {
