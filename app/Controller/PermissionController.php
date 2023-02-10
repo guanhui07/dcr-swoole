@@ -18,25 +18,26 @@ class PermissionController extends Controller
         parent::__construct();
     }
 
-    #[RequestMapping(methods: "GET", path:"/permission/test")]
+    #[RequestMapping(methods: "GET", path: "/permission/test")]
     public function test(): array
     {
         Permission::addPermissionForUser('eve', 'articles', 'read');
         // adds a role for a user.
         Permission::addRoleForUser('eve', 'writer');
         // adds permissions to a rule
-        Permission::addPolicy('writer', 'articles','edit');
-        return apiResponse([]);
+        Permission::addPolicy('writer', 'articles', 'edit');
+        return apiResponse(['添加成功']);
     }
 
-    #[RequestMapping(methods: "GET", path:"/permission/test2")]
-    public function test2(): array
+    #[RequestMapping(methods: "GET", path: "/permission/test2")]
+    public function test2()
     {
         if (Permission::enforce("eve", "articles", "edit")) {
-            echo '恭喜你！通过权限认证';
+            $str = '恭喜你！通过权限认证';
         } else {
-            echo '对不起，您没有该资源访问权限';
+            $str = '对不起，您没有该资源访问权限';
         }
-        return apiResponse([]);
+        echo $str;
+        return $str;
     }
 }

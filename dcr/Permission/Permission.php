@@ -80,7 +80,6 @@ class Permission
 
             } catch (CasbinException | DependencyException | NotFoundException $e) {
                 var_dump($e->getMessage());
-                echo 23;die;
             }
         }
 
