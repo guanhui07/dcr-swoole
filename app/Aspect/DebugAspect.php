@@ -25,7 +25,7 @@ class DebugAspect
      */
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
-        var_dump(11);
+        var_dump('test aop ');
         try {
             return $proceedingJoinPoint->process();
         } catch (Exception $e) {
