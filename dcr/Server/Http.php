@@ -139,6 +139,6 @@ class Http
 
     protected function isSupportedOS(): bool
     {
-        return PHP_OS != 'Darwin';
+        return PHP_OS !== 'Darwin';
     }
 }
