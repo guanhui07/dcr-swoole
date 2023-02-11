@@ -60,12 +60,7 @@ class Boostrap
         $this->bootGuzzle();
 
         // @see https://github.com/swoole/swoole-src/issues/4975
-        run(function (){
-            Permission::start();
-        });
-//        Permission::start();
-        // 权限
-//        run(static function (){
+//        run(function (){
 //            Permission::start();
 //        });
     }
