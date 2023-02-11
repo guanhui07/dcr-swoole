@@ -316,6 +316,7 @@ class TestEvent extends Event
 <?php
 namespace App\Listener;
 use App\Event\TestEvent;
+use App\Listener\Contract\BaseListenerInterface;
 class TestEventListener implements BaseListenerInterface
 {
     /**
