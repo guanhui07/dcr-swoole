@@ -9,6 +9,8 @@ declare(strict_types=1);
 namespace DcrSwoole\Permission\Model;
 
 //use Illuminate\Database\Eloquent\Model;
+use App\Model\PermissionModel;
+use DcrRedis\Redis;
 use DcrSwoole\DbConnection\Model;
 use DcrSwoole\Utils\Coroutine;
 use Guanhui07\SwooleDatabase\Adapter\DB;
@@ -88,9 +90,19 @@ class LaravelRuleModel extends Model
 
 //        return $this->store->remember($this->config('cache.key'), $this->config('cache.ttl'), $get);
         if ($this->isCoroutine()) {
-            return DB::table('casbin_rule')->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get();
+            var_dump('1111');
+//            return DB::table('casbin_rule')->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get();
+            return PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
         }
+        var_dump(222);
+//        return PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
 
+
+        go(static function(){
+            $data = PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
+            Redis::set('casbin_cache',$data,60);
+        });
+        \Swoole\Event::wait();
         return [];
 
     }
