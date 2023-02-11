@@ -17,7 +17,8 @@ use Raylin666\Guzzle\Client;
 use Raylin666\Pool\PoolOption;
 use Swoole\Database\RedisConfig;
 use DcrRedis\Redis;
-
+use function Swoole\Coroutine\run;
+use function Swoole\Coroutine\go;
 /**
  * 初始化 注册 各种 env config orm 门面 事件
  * 捕获异常，错误控制
@@ -58,9 +59,13 @@ class Boostrap
         // guzzle
         $this->bootGuzzle();
 
-        Permission::start();
+        // @see https://github.com/swoole/swoole-src/issues/4975
+        run(function (){
+            Permission::start();
+        });
+//        Permission::start();
         // 权限
-//        go(static function (){
+//        run(static function (){
 //            Permission::start();
 //        });
     }

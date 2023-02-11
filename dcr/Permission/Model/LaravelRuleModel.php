@@ -104,16 +104,10 @@ class LaravelRuleModel extends Model
 //            Redis::set('casbin_cache',$data,60);
 //        });
 
-        $data = null;
-        run(function () {
-            go(function () {
-                $data = PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
-            });
-        });
-
+        $data = PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
 
 //        \Swoole\Event::wait();
-        return [];
+        return $data;
 
     }
 
