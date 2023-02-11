@@ -1,6 +1,11 @@
 # 整合各种包，基于Swoole 实现的框架
 
-- 集成 laravel orm , restful route, redis, guzzle monolog
+
+-  laravel orm 
+-  restful route
+-  predis,
+-  guzzle
+-  monolog
 - http websocket
 - rabbitmq
 - container
@@ -155,7 +160,7 @@ class UserModel extends Model
 
 ### 控制器validate
 ```php
-   #[RequestMapping(methods: "GET , POST", path:"/test/test4")]
+    #[RequestMapping(methods: "GET , POST", path:"/test/test4")]
     public function test4($request, $response)
     {
         $validate = Validation::check($this->request->post ?? [], [
@@ -172,7 +177,7 @@ class UserModel extends Model
         // $postData = $v->all(); // 原始数据
         $safeData = $validate->getSafeData(); // 验证通过的安全数据
 
-        return $safeData
+        return $safeData;
     }
 ```
 
@@ -226,13 +231,12 @@ use Inhere\Console\IO\Output;
 use Toolkit\PFlag\FlagsParser;
 
 /**
- * Class Test2
  * @package app\Console\Command
- * php artisan test2
+ * php artisan test
  */
 class Test2 extends \Inhere\Console\Command
 {
-    protected static string $name = 'test2';
+    protected static string $name = 'test';
 
     protected static string $desc = 'print system ENV information';
 
