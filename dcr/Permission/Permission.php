@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace DcrSwoole\Permission;
 
 use Casbin\Enforcer;
+use Casbin\Enforcer as BaseEnforcer;
 use Casbin\Exceptions\CasbinException;
 use Casbin\Model\Model;
 use DcrSwoole\Permission\Adapter\LaravelDatabaseAdapter;
-use DcrSwoole\Permission\Watcher\RedisWatcher;
 use DI\DependencyException;
 use DI\NotFoundException;
 
@@ -56,27 +56,19 @@ class Permission
         $config = config('permission.' . $driver);
         $model = new Model();
         if ('file' === $config['model']['config_type']) {
-            try {
-                $model->loadModel($config['model']['config_file_path']);
-            } catch (CasbinException $e) {
-                echo $e->getMessage();
-            }
-        } elseif ('text' === $config['model']['config_type']) {
-            try {
-                $model->loadModel($config['model']['config_text']);
-            } catch (CasbinException $e) {
-                echo $e->getMessage();
-            }
+            $model->loadModel($config['model']['config_file_path']);
         }
 //        var_dump($model);
 //        return;;
         if (is_null(static::$_manager)) {
             try {
-//                static::$_manager = new Enforcer($model, base_path().'config/plugin/casbin/permission/rbac_policy.csv');
-
-                $m = new Enforcer(base_path().'config/plugin/casbin/permission/rbac-model.conf',
-                    base_path().'config/plugin/casbin/permission/rbac_policy.csv');
-                static::$_manager  = $m;
+                $adapter = di()->get(LaravelDatabaseAdapter::class);
+                $m = new Enforcer($model,
+                    $adapter,
+                    false);
+//                $m = new Enforcer(base_path() . 'config/plugin/casbin/permission/rbac-model.conf',
+//                    base_path() . 'config/plugin/casbin/permission/rbac_policy.csv');
+                static::$_manager = $m;
 
             } catch (CasbinException | DependencyException | NotFoundException $e) {
                 var_dump($e->getMessage());
@@ -89,7 +81,13 @@ class Permission
 //        $watcher->setUpdateCallback(function () {
 //            static::$_manager->loadPolicy();
 //        });
+
     }
+
+//    public function __call($method, $parameters)
+//    {
+//        return di()->get(BaseEnforcer::class)->{$method}(...$parameters);
+//    }
 
     /**
      * @param $name

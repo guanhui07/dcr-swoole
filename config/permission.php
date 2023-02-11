@@ -12,8 +12,7 @@ return [
             'config_file_path' => base_path() . 'config/plugin/casbin/permission/rbac-model.conf',
             'config_text' => '',
         ],
-        // 适配器
-        'adapter' => DcrSwoole\Permission\Adapter\LaravelDatabaseAdapter::class,
+//        'adapter' => DcrSwoole\Permission\Adapter\LaravelDatabaseAdapter::class,
         // 数据库设置
         'database' => [
             'connection' => '',

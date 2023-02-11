@@ -10,6 +10,8 @@ namespace DcrSwoole\Permission\Model;
 
 //use Illuminate\Database\Eloquent\Model;
 use DcrSwoole\DbConnection\Model;
+use DcrSwoole\Utils\Coroutine;
+use Guanhui07\SwooleDatabase\Adapter\DB;
 
 /**
  * RuleModel Model
@@ -57,19 +59,19 @@ class LaravelRuleModel extends Model
         parent::__construct($data);
     }
 
-    /**
-     * Gets config value by key.
-     *
-     * @param string|null $key
-     * @param null $default
-     *
-     * @return mixed
-     */
-    protected function config(string $key = null, $default = null)
-    {
-        $driver = config('permission.default');
-        return config('permission.' . $driver . '.' . $key, $default);
-    }
+//    /**
+//     * Gets config value by key.
+//     *
+//     * @param string|null $key
+//     * @param null $default
+//     *
+//     * @return mixed
+//     */
+//    protected function config(string $key = null, $default = null)
+//    {
+//        $driver = config('permission.default');
+//        return config('permission.' . $driver . '.' . $key, $default);
+//    }
 
     /**
      * Gets rules from caches.
@@ -77,13 +79,24 @@ class LaravelRuleModel extends Model
      */
     public function getAllFromCache()
     {
-        $get = function () {
-            return $this->select('ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5')->get()->toArray();
-        };
-        if (!$this->config('cache.enabled', false)) {
-            return $get();
+//        $get = function () {
+//            return $this->select('ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5')->get()->toArray();
+//        };
+//        if (!$this->config('cache.enabled', false)) {
+//            return $get();
+//        }
+
+//        return $this->store->remember($this->config('cache.key'), $this->config('cache.ttl'), $get);
+        if ($this->isCoroutine()) {
+            return DB::table('casbin_rule')->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get();
         }
 
-        return $this->store->remember($this->config('cache.key'), $this->config('cache.ttl'), $get);
+        return [];
+
+    }
+
+    protected function isCoroutine(): bool
+    {
+        return Coroutine::id() > 0;
     }
 }

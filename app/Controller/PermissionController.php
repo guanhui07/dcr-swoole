@@ -18,15 +18,19 @@ class PermissionController extends Controller
         parent::__construct();
     }
 
+    /**
+     * @see https://github.com/php-casbin/php-casbin
+     * @return array
+     */
     #[RequestMapping(methods: "GET", path: "/permission/test")]
-    public function test(): array
+    public function test()
     {
         Permission::addPermissionForUser('eve', 'articles', 'read');
         // adds a role for a user.
         Permission::addRoleForUser('eve', 'writer');
         // adds permissions to a rule
         Permission::addPolicy('writer', 'articles', 'edit');
-        return apiResponse(['添加成功']);
+        return ['msg'=>'添加成功'];
     }
 
     #[RequestMapping(methods: "GET", path: "/permission/test2")]
@@ -38,6 +42,6 @@ class PermissionController extends Controller
             $str = '对不起，您没有该资源访问权限';
         }
         echo $str;
-        return $str;
+        return ['msg'=>$str];
     }
 }
