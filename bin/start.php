@@ -4,7 +4,6 @@
 use DcrSwoole\Di\Container;
 use Swoole\Runtime;
 
-
 !defined('BASE_PATH') && define('BASE_PATH', dirname(__DIR__, 1));
 !defined('SWOOLE_HOOK_FLAGS') && define('SWOOLE_HOOK_FLAGS', SWOOLE_HOOK_ALL);
 !defined('CONFIG_PATH') && define('CONFIG_PATH', dirname(__DIR__) . '/config/');
@@ -19,4 +18,5 @@ try {
 } catch (Exception $e) {
 }
 DcrSwoole\Server\Application::run();
+
 

@@ -14,7 +14,8 @@ use DcrRedis\Redis;
 use DcrSwoole\DbConnection\Model;
 use DcrSwoole\Utils\Coroutine;
 use Guanhui07\SwooleDatabase\Adapter\DB;
-
+use function Swoole\Coroutine\run;
+use function Swoole\Coroutine\go;
 /**
  * RuleModel Model
  */
@@ -98,11 +99,20 @@ class LaravelRuleModel extends Model
 //        return PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
 
 
-        go(static function(){
-            $data = PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
-            Redis::set('casbin_cache',$data,60);
+//        go(static function(){
+//            $data = PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
+//            Redis::set('casbin_cache',$data,60);
+//        });
+
+        $data = null;
+        run(function () {
+            go(function () {
+                $data = PermissionModel::query()->select(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->get()->toArray();
+            });
         });
-        \Swoole\Event::wait();
+
+
+//        \Swoole\Event::wait();
         return [];
 
     }
