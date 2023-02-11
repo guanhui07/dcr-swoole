@@ -56,6 +56,7 @@ EOL;
         $bootstrap = $container->make(Boostrap::class);
         $bootstrap->run();
 
+        //aop
         ClassLoader::init();
 
         self::welcome();
