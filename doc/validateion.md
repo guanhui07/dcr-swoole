@@ -1,3 +1,7 @@
+## validator 
+
+验证器可以有效减少 if else 判断，本框架基础`inhere/php-validate` composer包 实现验证器
+[https://github.com/inhere/php-validate](https://github.com/inhere/php-validate)
 
 ### 控制器validate
 ```php
