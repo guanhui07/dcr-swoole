@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Utils\Process;
+
+namespace DcrSwoole\Process;
 
 
 use DcrSwoole\Log\LogBase;
@@ -69,8 +70,7 @@ class Manage
      * */
     public function hook()
     {
-        echo 'process ts1';
-        sleep(2);
+
         // 请于子类中完成之下的业务逻辑处理，或实现一些其他的 dispatch 操作等
     }
 

@@ -8,7 +8,7 @@ namespace DcrSwoole\Process;
  * Class ProcessManager
  * @package DcrSwoole\Process
  */
-class ProcessManager
+class Process
 {
     /**
      * @var array

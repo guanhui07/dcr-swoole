@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Command;
 
-use App\Utils\Process\Manage;
+use App\Process\TestProcess;
+use DcrSwoole\Process\Manage;
 use Inhere\Console\Command;
 use Inhere\Console\IO\Input;
 use Inhere\Console\IO\Output;
@@ -45,7 +46,7 @@ class ProcessCommand extends Command
 //        ApplicationContext::getContainer()->get(TestRepository::class)->fromRepos();
 //        $output->info("hello world ...");
 
-        $manage = new Manage([
+        $manage = new TestProcess([
             'processNum' => 2,
             'heartTime' => 1,
             'name' => 'test process',
