@@ -1,3 +1,8 @@
+## 中间件
+
+本框架使用 `middlewares/utils` composer包实现 中间件,管道模式，洋葱模型
+
+ 
 
 ## 路由注解和中间件注解
 ```php
