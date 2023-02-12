@@ -1,3 +1,8 @@
+
+## process
+
+### 定义启动命令 
+```php
 <?php
 
 declare(strict_types=1);
@@ -13,6 +18,7 @@ use Toolkit\PFlag\FlagsParser;
 
 /**
  * php artisan process
+ * 需要配置app/Console/Kernel.php
  */
 class ProcessCommand extends Command
 {
@@ -36,3 +42,30 @@ class ProcessCommand extends Command
         $manage->monitorStart();
     }
 }
+
+```
+
+### 定义Process类
+```php
+<?php
+declare(strict_types=1);
+
+
+namespace App\Process;
+
+
+use DcrSwoole\Process\Manage;
+
+class TestProcess extends Manage implements ProcessInterface
+{
+    public function hook(): void
+    {
+        while (true) {
+            echo 'process ts1';
+            sleep(1);
+        }
+    }
+}
+```
+
+

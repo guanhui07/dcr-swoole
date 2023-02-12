@@ -208,7 +208,7 @@ class TestMiddleware implements MiddlewareInterface
     public function handle()
     {
         return static function ($request, $next) {
-            $data = Request::instance()->get;
+            $data = di()->get(Request::class)->get();
 //            throw new RuntimeException('test middlere error');
             return $next->handle($request);
         };
