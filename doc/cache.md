@@ -4,7 +4,7 @@
 use DcrSwoole\Utils\DataRedis;
 
 
-#[Inject]
+    #[Inject]
     public DataRedis $redis;
 ```
 
