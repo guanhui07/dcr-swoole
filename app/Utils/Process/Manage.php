@@ -67,8 +67,10 @@ class Manage
     /**
      * 钩子方法，请编码业务逻辑
      * */
-    protected function hook()
+    public function hook()
     {
+        echo 'process ts1';
+        sleep(2);
         // 请于子类中完成之下的业务逻辑处理，或实现一些其他的 dispatch 操作等
     }
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Console\Command\ProcessCommand;
 use App\Console\Command\TestCommand;
 use App\Console\Command\TestConsumer;
 
@@ -21,6 +22,7 @@ class Kernel
         return [
             TestCommand::class,
             TestConsumer::class,
+            ProcessCommand::class,
         ];
     }
 }
