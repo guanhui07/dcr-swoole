@@ -18,6 +18,9 @@ AOP 为 `Aspect Oriented Programming` 的缩写，意为：`面向切面编程`�
 - `切面(Aspect)` 为对流程织入的定义类，包括要介入的目标，以及实现对原方法的修改加强处理
 - `代理类(ProxyClass)` ，每个被介入的目标类最终都会生成一个代理类，来达到执行 `切面(Aspect)` 方法的目的
 
+本框架使用的`hyperf/aop-integration` composer包
+
+
 ## 定义切面(Aspect)
 
 
