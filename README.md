@@ -398,7 +398,7 @@ class DebugAspect
 ```
 
 ## 文档
-[https://github.com/guanhui07/dcr-swoole/wiki](https://github.com/guanhui07/dcr-swoole/wiki)
+[https://github.com/guanhui07/dcr-swoole/tree/master/doc](https://github.com/guanhui07/dcr-swoole/tree/master/doc)
 
 ### 更多例子查看 代码demo
 
