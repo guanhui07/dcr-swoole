@@ -235,7 +235,7 @@ use Toolkit\PFlag\FlagsParser;
  * @package app\Console\Command
  * php artisan test
  */
-class Test2 extends \Inhere\Console\Command
+class TestCommand extends \Inhere\Console\Command
 {
     protected static string $name = 'test';
 
