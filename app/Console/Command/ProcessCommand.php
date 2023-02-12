@@ -22,10 +22,30 @@ class ProcessCommand extends Command
 
     protected function configFlags(FlagsParser $fs): void
     {
+        // 绑定选项
+        $fs->addOptByRule('update, up', 'bool;update linux command docs to latest');
+        $fs->addOptByRule('init, i', 'bool;update linux command docs to latest');
+        $fs->addOptByRule('search, s', 'string;input keywords for search');
+
+        // 绑定参数
+        // - 这里没有设置必须 可以不传，获取到就是空string
+        $fs->addArg('keywords', 'the keywords for search or show docs', 'string');
     }
 
     protected function execute(Input $input, Output $output)
     {
+//        $keywords = $this->flags->getOpt('search', 23);
+//        var_dump($keywords);
+//
+//        $name = $this->flags->getFirstArg();
+//        if ( !$name && !$keywords) {
+//            // env | grep XXX
+//            $output->aList($_SERVER, 'ENV Information', ['ucFirst' => false]);
+//            return;
+//        }
+//        ApplicationContext::getContainer()->get(TestRepository::class)->fromRepos();
+//        $output->info("hello world ...");
+
         $manage = new TestProcess([
             'processNum' => 2,
             'heartTime' => 1,
