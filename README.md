@@ -532,3 +532,17 @@ https://github.com/sunsgneayo/annotation 路由注解参考
 ### todo:
 类似`hyperf`实现 Command Crontab AutoController Cacheable 等注解
 
+
+## 我的其他包：
+https://github.com/guanhui07/dcr  借鉴Laravel实现的 PHP Framework ，FPM模式、websocket使用的workerman、支持容器、PHP8特性attributes实现了路由注解、中间件注解、Laravel Orm等特性
+
+https://github.com/guanhui07/redis Swoole模式下 Redis连接池
+
+https://github.com/guanhui07/facade  facade、门面 fpm模式下可使用
+
+https://github.com/guanhui07/dcr-swoole-crontab 基于swoole实现的crontab秒级定时任务
+
+https://github.com/guanhui07/database  基于 illuminate/database 做的连接池用于适配Swoole的协程环境
+
+https://github.com/guanhui07/dcr-swoole  高性能PHP Framework ，Cli模式，基于Swoole实现，常驻内存，协程框架，支持容器、切面、PHP8特性attributes实现了路由注解、中间件注解、支持Laravel Orm等特性
+
