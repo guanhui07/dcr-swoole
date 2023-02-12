@@ -1,6 +1,11 @@
 
 ## process
 
+多进程处理任务，消费队列是软件开发必不可少
+
+### 原理
+基础于 `Swoole\Process` 实现
+
 ### 定义启动命令 
 ```php
 <?php
@@ -33,7 +38,7 @@ class ProcessCommand extends Command
     protected function execute(Input $input, Output $output)
     {
         $manage = new TestProcess([
-            'processNum' => 2,
+            'processNum' => 8,// 开启的进程数
             'heartTime' => 1,
             'name' => 'test process',
             'pre' => 'dcr',
