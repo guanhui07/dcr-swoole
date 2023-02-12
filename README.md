@@ -10,13 +10,13 @@
 - rabbitmq
 - container
 - event
-- middleware  中间件注解
+- middleware 支持注解配置中间件
 - validate
 - monolog
 - collection
 - carbon
 - dotenv
-- 支持路由注解 中间件注解
+- 支持注解配置路由 注解配置中间件
 - aop 切面
 
 ### 安装
