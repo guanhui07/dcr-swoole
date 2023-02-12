@@ -1,5 +1,5 @@
 
-## Log
+## Log 日志
 
 ```php
 use DcrSwoole\Log\Log;
