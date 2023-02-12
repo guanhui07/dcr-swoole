@@ -17,7 +17,7 @@ class AuthMiddleware implements MiddlewareInterface
     {
         return static function ($request, $next) {
             echo 'auth login middleware';
-            $data = Request::instance()->post;
+            $data = di()->get(Request::class)->post();
             LogBase::info(var_export($data, true));
             $token = $data['token'] ?? '';
             if (!$token) {
