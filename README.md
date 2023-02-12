@@ -3,7 +3,7 @@
 
 -  laravel orm 
 -  restful route
--  predis,
+-  predis
 -  guzzle
 -  monolog
 - http websocket
@@ -12,10 +12,11 @@
 - event
 - middleware 支持注解配置中间件
 - validate
-- monolog
+- crontab
+- command
 - collection
 - carbon
-- dotenv
+- dotenv config
 - 支持注解配置路由 注解配置中间件
 - aop 切面
 
