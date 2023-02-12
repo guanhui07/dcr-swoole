@@ -1,4 +1,8 @@
 
+### Command 命令脚本
+脚本任务 是服务器开发必须得，本框架使用 `inhere/php-validate` composer包实现
+
+
 ### Console 命令应用 需要在`app/Console/Kernel.php` 配置 命令类
 ```php
 <?php
