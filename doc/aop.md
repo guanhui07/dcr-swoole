@@ -1,7 +1,7 @@
 
-## aop切面
+# aop切面
 
-# AOP 面向切面编程
+## AOP 面向切面编程
 
 ## 概念
 
@@ -59,5 +59,35 @@ class DebugAspect
         }
     }
 }
+```
+
+`config/config.php`
+
+```php
+<?php
+
+use Hyperf\Di\Annotation\AspectCollector;
+
+return [
+    'annotations' => [
+        'scan' => [
+            'paths' => [
+                BASE_PATH . '/app',
+            ],
+            'ignore_annotations' => [
+                'mixin',
+            ],
+            'class_map' => [
+            ],
+            'collectors' => [
+                AspectCollector::class
+            ],
+        ],
+    ],
+    'aspects' => [
+        // 这里写入对应的 Aspect
+        App\Aspect\DebugAspect::class,
+    ]
+];
 ```
 
