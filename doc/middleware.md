@@ -44,17 +44,17 @@ class MiddlewareController extends Controller
 
 ## 多个中间件注解
 ```php
-use app\middleware\App;
-use app\middleware\Log;
-#[RequestMapping(methods: "GET , POST" , path:"/api/json") , Middlewares(App::class , Log::class)]
-public function json(Request $request)
-{
-    return json(['code' => 0, 'msg' => 'ok']);
-}
-public function json(Request $request)
-{
-    return json(['code' => 0, 'msg' => 'ok']);
-}
+    use App\Middleware\AuthMiddleware;
+    use App\Middleware\TestMiddleware;
+    use DcrSwoole\Annotation\Mapping\Middlewares;
+    use DcrSwoole\Annotation\Mapping\RequestMapping;
+
+    #[RequestMapping(methods: "GET , POST", path:"/test/middleware")]
+    #[Middlewares(AuthMiddleware::class, TestMiddleware::class)]
+    public function test(): string
+    {
+        return 'ok';
+    }
 ```
 
 
