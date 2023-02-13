@@ -64,6 +64,8 @@ php migrate.php migrations:migrate
 ### container
 
 ```
+use DcrSwoole\Utils\ApplicationContext;
+
 ApplicationContext::getContainer()
 或 di()
 
@@ -126,6 +128,9 @@ public function json(Request $request)
 
 ## 从容器 拿对象 获取 参数
 ```php
+use DcrSwoole\Utils\ApplicationContext;
+
+
 //->all()  ->get()  ->post() 等方法
 ApplicationContext::getContainer()->get(Request::class)->all();
 //di()->(Request::class)->all();
@@ -133,6 +138,9 @@ ApplicationContext::getContainer()->get(Request::class)->all();
 
 ## redis 操作
 ```php
+use DcrSwoole\Utils\ApplicationContext;
+
+
 ApplicationContext::getContainer()->get(DataRedis::class);
 //->setex ->get ->del ->setnx 等方法 和predis一致
 ```
