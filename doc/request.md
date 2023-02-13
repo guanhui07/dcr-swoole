@@ -18,6 +18,9 @@ Swoole接收到请求在onRequest 回调到此方法，调用有 $request,$respo
 ## 示例代码
 
 ```php
+    use DcrSwoole\Request\Request;
+
+
     #[RequestMapping(methods: "GET , POST", path:"/index/test2")]
     #[Middlewares(AuthMiddleware::class, TestMiddleware::class)]
     public function test2(): string
