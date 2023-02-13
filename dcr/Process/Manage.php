@@ -95,7 +95,7 @@ class Manage
     /**
      * 启动monitor进程
      * */
-    private function newMonitor(): bool|int
+    private function newMonitor()
     {
         $process = new  Process(function () {
             pcntl_signal(SIGTERM, [$this, "killAllProcess"]);
@@ -139,7 +139,7 @@ class Manage
      * 注册一个进程
      * desc : 告诉当前 monitor 该进程的pid和pname，实现进程
      * */
-    private function registeProcess($name): bool
+    private function registeProcess($name)
     {
         $process = new Process(function () use ($name) {
             $pid = getmypid();
