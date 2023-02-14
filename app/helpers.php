@@ -32,8 +32,8 @@ function apiReturnSuccess($outputData = []): string
     $data['code'] = 200;
     $data['message'] = 'success';
     $data['data'] = $outputData;
-    $urldecode_flag = false;
-    return Json::encode($data, $urldecode_flag);
+    $urldecodeFlag = false;
+    return Json::encode($data, $urldecodeFlag);
 }
 
 
@@ -58,11 +58,11 @@ function cException($exception)
 //        "action"    => $request->header("HOST") . $request->server("REQUEST_URI"),
 //        "server_ip" => gethostname(),
 //    ));
-    $log_data = '';
-    $log_data .= date("Y-m-d H:i:s") . ' ' . $exception->__toString();
+    $logData = '';
+    $logData .= date("Y-m-d H:i:s") . ' ' . $exception->__toString();
 
-    writeLog($log_data, 'exception_error');
-    echo $log_data;
+    writeLog($logData, 'exception_error');
+    echo $logData;
     return;
 }
 
@@ -95,7 +95,7 @@ function writeLog($msg, $name = null, $logDir = null)
     $logFile = $logPath . "/" . $name . ".log";
 
     if (is_array($msg)) {
-        $msg = json_encode($msg);
+        $msg = Json::encode($msg);
     }
     $msg = '[' . date("Y-m-d H:i:s", time()) . '] ' . $msg . "\n";
 
@@ -209,16 +209,15 @@ function randStr(): string
 
 function xmlToArray($xml)
 {
-    $array_data = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
-    return $array_data;
+    $arrayData = Json::decode(Json::encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
+    return $arrayData;
 }
 
 
 if (!function_exists('objToArray')) {
     function objToArray($o)
     {
-        // return json_decode(  json_encode($o),1 );
-        return json_decode(json_encode($o), true);
+        return Json::decode(Json::encode($o), true);
     }
 }
 
@@ -280,7 +279,7 @@ function error($message = '失败', $code = 404, $data = ''): string
         print_r($data);
         return $message;
     } else {
-        $result = json_encode($data);
+        $result = Json::encode($data);
         return Json::encode($result);
     }
 }
@@ -364,7 +363,7 @@ if (!function_exists('retry')) {
         beginning:
         try {
             return $callback();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             echo $times . PHP_EOL;
             if (--$times < 0) {
                 throw $e;
@@ -408,6 +407,7 @@ function di($name = null)
     }
     return $container->get($name);
 }
+
 if (!function_exists('containerNew')) {
     function containerNew($name)
     {
@@ -513,16 +513,16 @@ if (!function_exists('call')) {
  */
 function arraySort(array $arr, string $keys, $type = 'asc'): array
 {
-    $keysvalue = $new_array = [];
+    $keysvalue = $newArray = [];
     foreach ($arr as $k => $v) {
         $keysvalue[$k] = $v[$keys];
     }
     $type === 'asc' ? asort($keysvalue) : arsort($keysvalue);
     reset($keysvalue);
     foreach ($keysvalue as $k => $v) {
-        $new_array[$k] = $arr[$k];
+        $newArray[$k] = $arr[$k];
     }
-    return $new_array;
+    return $newArray;
 }
 
 

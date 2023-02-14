@@ -2,6 +2,7 @@
 <?php
 
 use DcrSwoole\Di\Container;
+use DcrSwoole\Server\Application;
 use Swoole\Runtime;
 
 !defined('BASE_PATH') && define('BASE_PATH', dirname(__DIR__, 1));
@@ -17,6 +18,6 @@ try {
     Container::instance();
 } catch (Exception $e) {
 }
-DcrSwoole\Server\Application::run();
+Application::run();
 
 
