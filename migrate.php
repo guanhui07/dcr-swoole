@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 require_once __DIR__.'/vendor/autoload.php';
 
-use app\Utils\ConfigBase;
 use DcrSwoole\Di\Container;
 use DcrSwoole\Framework\Boostrap;
 use Doctrine\DBAL\DriverManager;
