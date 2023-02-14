@@ -39,7 +39,7 @@ class Router
     /**
      * @var GroupCountBased
      */
-    protected static ?GroupCountBased $dispatcher = null;
+    protected static $dispatcher = null;
 
     /**
      * @var RouteCollector
