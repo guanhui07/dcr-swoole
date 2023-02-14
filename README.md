@@ -55,7 +55,7 @@ php artisan test
 
 ### migrate:
 
-```
+```shell
 php migrate.php  migrations:generate
 php migrate.php migrations:migrate
 
@@ -63,11 +63,11 @@ php migrate.php migrations:migrate
 
 ### container
 
-```
+```php
 use DcrSwoole\Utils\ApplicationContext;
 
-ApplicationContext::getContainer()
-或 di()
+ApplicationContext::getContainer();
+//或 di();
 
 
 ```
