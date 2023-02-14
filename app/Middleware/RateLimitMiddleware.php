@@ -6,6 +6,7 @@ namespace App\Middleware;
 
 
 use App\Exception\RuntimeException;
+use App\Middleware\Contract\MiddlewareInterface;
 use App\Utils\Json;
 use Closure;
 use DcrSwoole\Log\LogBase;
@@ -14,7 +15,7 @@ use DcrSwoole\Request\Request;
 use DcrSwoole\Response\Response;
 use DcrSwoole\Utils\ApplicationContext;
 
-class RateLimitMiddleware
+class RateLimitMiddleware implements MiddlewareInterface
 {
     public function handle(): Closure
     {
