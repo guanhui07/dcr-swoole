@@ -16,6 +16,7 @@ return [
     // 数据库连接配置信息
     'connections' => [
         'mysql' => [
+            'pool_size' => 64,
             // 数据库类型
             'type' => $_ENV['type'],
             // 服务器地址

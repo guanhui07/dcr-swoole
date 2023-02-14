@@ -82,7 +82,7 @@ class Boostrap
             ->withPassword($configDb['password'])
             ->withCharset('utf8mb4') // 字符集编码
             ->setConfig('default'); // 设置全局访问(默认为default)
-        PoolManager::addPool(64, 'default'); // 设置指定连接池尺寸(连接名称默认为 default)
+        PoolManager::addPool($configDb['pool_size'] ?? 64, 'default'); // 设置指定连接池尺寸(连接名称默认为 default)
     }
 
     /**
