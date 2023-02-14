@@ -99,7 +99,7 @@ class Boostrap
                 ->withAuth($config['auth'])
                 ->withDbIndex(1)
                 ->withTimeout(1),
-                $config['size'],// pool
+                $config['size'] ?? 8,// pool
             );
         }
     }
