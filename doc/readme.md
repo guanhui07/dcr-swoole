@@ -13,7 +13,7 @@
     - [配置](config.md)
     - [容器](container.md)
     - [依赖注入](di.md)
-    - [时间](event.md)
+    - [事件](event.md)
     - [日志](log.md)
     - [aop](aop.md)
     - [guzzle](guzzle.md)
