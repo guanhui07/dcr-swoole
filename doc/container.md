@@ -1,7 +1,7 @@
 ### container 容器
 
 ### 实现原理
-容器，支持依赖注入，底层为反射 ,本框架使用的`php-di/php-di` composer包 
+容器，支持依赖自动注入，底层为反射 ,本框架使用的`php-di/php-di` composer包 
 
 
 ### 获取容器
