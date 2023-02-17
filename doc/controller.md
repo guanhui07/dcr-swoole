@@ -1,7 +1,7 @@
 ## controller
 
 ```php
-  #[RequestMapping(methods: "GET , POST", path:"/index/test1")]
+    #[RequestMapping(methods: "GET , POST", path:"/index/test1")]
     public function test(): string
     {
         return 'hello world';
