@@ -38,6 +38,8 @@
     "guanhui07/guzzle": "^1.2",
     "guanhui07/redis": "^1.1",
     "hyperf/aop-integration": " ^1.1",
+    "hyperf/utils": "3.0.0",
+    "hyperf/di": "3.0.0",
     "inhere/console": "^4.1",
     "inhere/php-validate": "^2.8",
     "intervention/image": "^2.7",
