@@ -558,3 +558,7 @@ https://github.com/guanhui07/database  基于 illuminate/database 做的连接�
 
 https://github.com/guanhui07/dcr-swoole  高性能PHP Framework ，Cli模式，基于Swoole实现，常驻内存，协程框架，支持容器、切面、PHP8特性attributes实现了路由注解、中间件注解、支持Laravel Orm等特性
 
+https://github.com/guanhui07/geohash  geohash 用于附近的人
+
+
+
