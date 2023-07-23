@@ -552,6 +552,8 @@ https://github.com/guanhui07/facade  facade、门面 fpm模式下可使用
 
 https://github.com/guanhui07/dcr-swoole-crontab 基于swoole实现的crontab秒级定时任务
 
+https://github.com/guanhui07/timer php定时器，参考了workerman源码 实现一个单进程(守护进程)的定时器。
+
 https://github.com/guanhui07/database  基于 illuminate/database 做的连接池用于适配Swoole的协程环境
 
 https://github.com/guanhui07/dcr-swoole  高性能PHP Framework ，Cli模式，基于Swoole实现，常驻内存，协程框架，支持容器、切面、PHP8特性attributes实现了路由注解、中间件注解、支持Laravel Orm等特性
