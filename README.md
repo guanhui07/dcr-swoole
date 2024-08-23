@@ -560,5 +560,6 @@ https://github.com/guanhui07/dcr-swoole  高性能PHP Framework ，Cli模式，�
 
 https://github.com/guanhui07/geohash  geohash 用于附近的人
 
+https://github.com/guanhui07/open-ai  open-ai  chatgpt调用
 
 
