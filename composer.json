@@ -33,8 +33,8 @@
     "elasticsearch/elasticsearch": "7.16",
     "firebase/php-jwt": "^6.3",
     "gregwar/captcha": "^1.1",
-    "guanhui07/database": "^1.1",
-    "guanhui07/dcr-swoole-crontab": "^1.1",
+    "guanhui07/database": "dev-master",
+    "guanhui07/dcr-swoole-crontab": "dev-master",
     "guanhui07/guzzle": "^1.2",
     "guanhui07/redis": "^1.1",
     "hyperf/aop-integration": " ^1.1",
@@ -67,7 +67,7 @@
     "swoole/ide-helper": "^5.0"
   },
   "suggest": {
-    "php": ">=8.2"
+    "php": ">=8.3"
   },
   "autoload": {
     "psr-4": {
