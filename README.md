@@ -24,6 +24,7 @@
 ### 安装
 ```
 composer create-project dcrswoole/framework skeleton
+cp .env.example  .env
 ```
 
 ### 分层 (demo未按此方式)
