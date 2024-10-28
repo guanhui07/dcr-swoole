@@ -49,4 +49,16 @@ class Log
         $log->pushHandler(new StreamHandler(base_path() . 'runtime/log.log', $level));
         return $log;
     }
+
+   /**
+     * @param string $method
+     * @param array $arguments
+     * 
+     * @return static
+     */
+    public static function __callStatic(string $method, array $arguments)
+    {
+        return (new static)->{$method}(...$arguments);
+    }
+    
 }
