@@ -23,7 +23,7 @@
 
 ### 安装
 ```
-composer create-project dcrswoole/framework skeleton
+composer create-project dcr_swoole/framework skeleton
 cp .env.example  .env
 ```
 
@@ -566,6 +566,3 @@ https://github.com/guanhui07/geohash  geohash 用于附近的人
 https://github.com/guanhui07/open-ai  open-ai  chatgpt调用
 
 https://github.com/guanhui07/geohash  附近的人
-
-
-
